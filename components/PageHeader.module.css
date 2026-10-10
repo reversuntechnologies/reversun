@@ -1,0 +1,201 @@
+.headerWrapper {
+  padding: 24px 0 44px 0;
+  background: linear-gradient(180deg, #FBF9F7 0%, #F5F3EF 100%);
+  border-bottom: 1px solid rgba(27, 51, 96, 0.08);
+  position: relative;
+  overflow: visible;
+  text-align: center;
+}
+
+/* Big Bold Headline Container matching DoodleByte Screenshot */
+.titleArea {
+  position: relative;
+  cursor: default;
+  overflow: visible;
+  display: inline-block;
+  margin: 0 auto 24px auto;
+  user-select: none;
+  --lens-size: 120px;
+  --lens-radius: 60px;
+  --lens-x: -300px;
+  --lens-y: -300px;
+}
+
+.bigTitle {
+  font-size: clamp(48px, 6.8vw, 92px);
+  font-weight: 900;
+  color: #101E35;
+  letter-spacing: -2.5px;
+  line-height: 1.02;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Embedded preview card between words in the title */
+.inlineCardPreview {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1B3360 0%, #17376F 100%);
+  color: #FFFFFF;
+  padding: 8px 20px;
+  border-radius: 18px;
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0px;
+  text-transform: none;
+  box-shadow: 0 8px 24px rgba(27, 51, 96, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transform: translateY(-4px);
+  vertical-align: middle;
+}
+
+.inlinePreviewDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary-orange);
+  box-shadow: 0 0 10px var(--primary-orange);
+}
+
+/* 100% Round Lens Follower */
+.lensFollower {
+  position: absolute;
+  width: var(--lens-size, 120px);
+  height: var(--lens-size, 120px);
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+  background: #00A854; /* Emerald green from screenshot */
+  border: 2.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 168, 84, 0.45), inset 0 0 16px rgba(255, 255, 255, 0.3);
+  left: calc(var(--lens-x) - var(--lens-radius, 60px));
+  top: calc(var(--lens-y) - var(--lens-radius, 60px));
+  z-index: 25;
+  opacity: 0;
+  transform: scale(0.65);
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lensFollowerActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.lensTextInner {
+  position: absolute;
+  left: calc(-1 * var(--lens-x) + var(--lens-radius, 60px));
+  top: calc(-1 * var(--lens-y) + var(--lens-radius, 60px));
+  width: var(--title-width, 1100px);
+  pointer-events: none;
+}
+
+.lensTextInner .bigTitle {
+  color: #FFE600 !important;
+}
+
+.lensTextInner .bigTitle span {
+  color: #FFE600 !important;
+}
+
+.lensTextInner .inlineCardPreview {
+  background: #FFE600 !important;
+  color: #004D26 !important;
+  border-color: #FFFFFF !important;
+}
+
+.lensTextInner .inlinePreviewDot {
+  background: #004D26 !important;
+  box-shadow: none;
+}
+
+/* Subtitle paragraph */
+.subtitle {
+  max-width: 680px;
+  margin: 0 auto 32px auto;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.65;
+  color: #5C6E87;
+  font-weight: 500;
+}
+
+/* Horizontal Category Pills with Colored Dots (from DoodleByte screenshot) */
+.pillList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pillItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-navy);
+  box-shadow: 0 2px 8px rgba(27, 51, 96, 0.04);
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.pillItem:hover {
+  transform: translateY(-2px);
+  border-color: rgba(252, 98, 53, 0.4);
+  box-shadow: 0 6px 16px rgba(27, 51, 96, 0.08);
+}
+
+.pillDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pillLabel {
+  color: var(--primary-navy);
+  font-weight: 800;
+}
+
+.pillSub {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .bigTitle {
+    font-size: 46px;
+    letter-spacing: -1.5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bigTitle {
+    font-size: 34px;
+    letter-spacing: -1px;
+  }
+  .pillList {
+    justify-content: flex-start;
+  }
+}

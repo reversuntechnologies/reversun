@@ -1,0 +1,330 @@
+.section {
+  padding: 100px 0;
+  background: #FAF9F6;
+  position: relative;
+}
+
+.contactLayout {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+/* Left Column */
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.preTitle {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary-orange);
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 800;
+  color: var(--primary-navy);
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.responseSlaBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--orange-light);
+  color: var(--primary-orange);
+  border: 1px solid rgba(252, 98, 53, 0.2);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.channelsList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.channelItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  transition: all 0.25s ease;
+}
+
+.channelItem:hover {
+  transform: translateX(4px);
+  border-color: rgba(252, 98, 53, 0.3);
+  box-shadow: var(--shadow-sm);
+}
+
+.channelIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: #EFF3F8;
+  color: var(--primary-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.channelMeta strong {
+  display: block;
+  font-size: 14px;
+  color: var(--primary-navy);
+}
+
+.channelMeta span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* FAQ Accordion */
+.faqSection {
+  margin-top: 20px;
+}
+
+.faqTitle {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary-navy);
+  margin-bottom: 16px;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faqItem {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.faqQuestion {
+  width: 100%;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-navy);
+  cursor: pointer;
+}
+
+.faqAnswer {
+  padding: 0 20px 16px 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Right Column: Form */
+.formCard {
+  background: #FFFFFF;
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.formCardHeader {
+  margin-bottom: 32px;
+}
+
+.formCardTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--primary-navy);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.formCardSubtitle {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-navy);
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  background: #FAFBFD;
+  font-size: 14px;
+  color: var(--text-main);
+  transition: all 0.25s ease;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  background: #FFFFFF;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 3px var(--orange-glow);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+/* Chips in form */
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.chip {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  background: #EFF3F8;
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activeChip {
+  background: var(--primary-orange);
+  color: #FFFFFF;
+  border-color: var(--primary-orange);
+}
+
+.submitBtn {
+  width: 100%;
+  background: var(--primary-orange);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: var(--shadow-orange);
+  transition: all 0.25s ease;
+  margin-top: 12px;
+}
+
+.submitBtn:hover {
+  background: #FF5D37;
+  transform: translateY(-2px);
+}
+
+/* Success state */
+.successCard {
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.successIconWrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--orange-light);
+  color: var(--primary-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulseGlow 2s infinite;
+}
+
+.successTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary-navy);
+}
+
+.successMsg {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.resetBtn {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-navy);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+@media (max-width: 960px) {
+  .contactLayout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .formCard {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}

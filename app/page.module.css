@@ -1,0 +1,210 @@
+.homeWrapper {
+  padding-bottom: 60px;
+}
+
+.exploreSection {
+  padding: 80px 0;
+  background: #FFFFFF;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.exploreHeader {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 50px auto;
+}
+
+.preTitle {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary-orange);
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title {
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 800;
+  color: var(--primary-navy);
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.navCard {
+  background: #FAFBFD;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.navCard:hover {
+  transform: translateY(-6px);
+  background: #FFFFFF;
+  border-color: rgba(252, 98, 53, 0.4);
+  box-shadow: var(--shadow-lg);
+}
+
+.cardIconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--orange-light);
+  color: var(--primary-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.navCard:hover .cardIconWrap {
+  background: var(--primary-orange);
+  color: #FFFFFF;
+  transform: scale(1.08) rotate(5deg);
+  box-shadow: var(--shadow-orange);
+}
+
+.cardTitle {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary-navy);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.cardSummary {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.cardAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary-navy);
+  transition: all 0.2s ease;
+}
+
+.navCard:hover .cardAction {
+  color: var(--primary-orange);
+  transform: translateX(4px);
+}
+
+/* Bottom CTA Banner */
+.ctaBanner {
+  margin-top: 80px;
+  background: linear-gradient(135deg, var(--primary-navy) 0%, #17376F 100%);
+  border-radius: var(--radius-xl);
+  padding: 60px 48px;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ctaLeftTitle {
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.ctaLeftDesc {
+  font-size: 16px;
+  color: #CAD5E2;
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+.ctaBtnGroup {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.ctaBtnPrimary {
+  background: var(--primary-orange);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-orange);
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.ctaBtnPrimary:hover {
+  background: #FF5D37;
+  transform: translateY(-2px);
+}
+
+.ctaBtnSecondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 26px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.ctaBtnSecondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 960px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+  .ctaBanner {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 24px;
+  }
+  .ctaBtnGroup {
+    justify-content: center;
+  }
+}

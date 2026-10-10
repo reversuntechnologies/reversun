@@ -1,0 +1,115 @@
+.sideNavWrapper {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.numCircle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 14px rgba(27, 51, 96, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.numCircle:hover {
+  transform: scale(1.1);
+  color: var(--primary-navy);
+  border-color: rgba(252, 98, 53, 0.4);
+  box-shadow: 0 8px 20px rgba(27, 51, 96, 0.14);
+}
+
+.activeCircle {
+  background: var(--primary-navy);
+  color: #FFFFFF !important;
+  border-color: var(--primary-navy);
+  box-shadow: 0 6px 18px rgba(27, 51, 96, 0.3);
+  transform: scale(1.08);
+}
+
+.activeCircle::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid var(--primary-orange);
+  pointer-events: none;
+}
+
+/* Tooltip on hover */
+.tooltip {
+  position: absolute;
+  right: 52px;
+  background: var(--primary-navy);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tooltipDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-orange);
+}
+
+.navItem:hover .tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 1024px) {
+  .sideNavWrapper {
+    right: 12px;
+    gap: 8px;
+  }
+  .numCircle {
+    width: 36px;
+    height: 36px;
+    font-size: 11px;
+  }
+  .tooltip {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sideNavWrapper {
+    display: none;
+  }
+}
