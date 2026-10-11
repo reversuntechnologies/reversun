@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
   --primary-orange: #FC6235;
@@ -40,8 +40,9 @@
   --shadow-lg: 0 20px 45px rgba(27, 51, 96, 0.12);
   --shadow-orange: 0 10px 30px rgba(252, 98, 53, 0.35);
 
-  /* Typography Design Tokens (Montserrat - DoodleByte Typeface) */
-  --font-sans: 'Montserrat', var(--font-montserrat), -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  /* Primary Typography: Space Grotesk & Monospace: JetBrains Mono */
+  --font-sans: 'Space Grotesk', var(--font-space-grotesk), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', var(--font-jetbrains-mono), "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   --tracking-hero: -0.02em;
   --tracking-heading: -0.015em;
   --tracking-subhead: -0.01em;
@@ -53,6 +54,17 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+/* Custom Text Selection in Brand Theme Colors */
+::selection {
+  background-color: #0B132B;
+  color: #FF5A2B;
+}
+
+::-moz-selection {
+  background-color: #0B132B;
+  color: #FF5A2B;
 }
 
 html {
@@ -178,14 +190,28 @@ input, textarea, select {
 /* Utility Containers */
 .container {
   width: 100%;
-  max-width: 1620px;
+  max-width: 1540px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 74px 0 36px;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    max-width: 1400px;
+    padding: 0 70px 0 32px;
+  }
 }
 
 @media (max-width: 1280px) {
   .container {
-    padding: 0 28px;
+    max-width: 100%;
+    padding: 0 66px 0 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 54px 0 20px;
   }
 }
 
@@ -194,6 +220,47 @@ input, textarea, select {
     padding: 0 16px;
   }
 }
+
+/* Page Shifting Smooth Transitions */
+@keyframes pageShiftIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.pageTransitionWrapper {
+  animation: pageShiftIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+/* Staggered Component Entrance Animations (List one by one) */
+@keyframes componentSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animateComponent {
+  animation: componentSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Stagger Delays for items in lists and grids */
+.stagger-1 { animation-delay: 0.06s; }
+.stagger-2 { animation-delay: 0.12s; }
+.stagger-3 { animation-delay: 0.18s; }
+.stagger-4 { animation-delay: 0.24s; }
+.stagger-5 { animation-delay: 0.30s; }
+.stagger-6 { animation-delay: 0.36s; }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {

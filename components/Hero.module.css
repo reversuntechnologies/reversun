@@ -1,668 +1,456 @@
 .heroSection {
-  padding-top: 24px;
-  padding-bottom: 80px;
-  overflow: hidden;
+  padding-top: 36px;
+  padding-bottom: 24px;
   position: relative;
 }
 
-.heroTop {
-  position: relative;
-  width: 100%;
-  margin-bottom: 56px;
-}
-
-.titleArea {
-  position: relative;
-  cursor: none !important;
-  overflow: visible;
-  --lens-size: 168px;
-  --lens-radius: 84px;
-  --lens-zoom: 1.38;
-  --lens-x: -300px;
-  --lens-y: -300px;
-  width: 100%;
-}
-
-.titleArea * {
-  cursor: none !important;
-}
-
-.headline {
-  font-family: 'Montserrat', var(--font-montserrat), var(--font-sans), sans-serif !important;
-  font-size: clamp(48px, 6.2vw, 92px);
-  font-weight: 500 !important;
-  line-height: 1.15;
-  letter-spacing: -1.2px;
-  color: #101E35;
-  position: relative;
-}
-
-.lineOne {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 8px;
-}
-
-.lineTwo {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 8px;
-}
-
-.lineThree {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 0px;
-}
-
-.headlineNavy {
-  color: #1B3360;
-}
-
-.headlineGradient {
-  color: var(--primary-orange);
-  background: linear-gradient(135deg, var(--primary-orange) 0%, #FF8343 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.doubleArrowIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-2px);
-  animation: floatArrow 2.5s ease-in-out infinite;
-}
-
-@keyframes floatArrow {
-  0%, 100% { transform: translateY(-2px) translateX(0px); }
-  50% { transform: translateY(-2px) translateX(6px); }
-}
-
-.inlineCtaBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  background: var(--primary-orange);
-  color: #FFFFFF;
-  padding: 10px 24px 10px 14px;
-  border-radius: var(--radius-full);
-  font-size: clamp(15px, 1.4vw, 19px);
-  font-weight: 800;
-  letter-spacing: -0.3px;
-  box-shadow: 0 10px 28px rgba(252, 98, 53, 0.35);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  vertical-align: middle;
-  transform: translateY(-5px);
-  border: 2.5px solid rgba(255, 255, 255, 0.45);
-}
-
-.inlineCtaBtn:hover {
-  transform: translateY(-7px) scale(1.04);
-  background: #FF5D37;
-  box-shadow: 0 14px 35px rgba(252, 98, 53, 0.45);
-}
-
-.ctaBtnArrowWrap {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  color: var(--primary-orange);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.25s ease;
-}
-
-.inlineCtaBtn:hover .ctaBtnArrowWrap {
-  transform: rotate(45deg);
-}
-
-/* Container Rig coordinating Lens Glass + Handle together */
-.lensRig {
-  position: absolute;
-  width: var(--lens-size, 168px);
-  height: var(--lens-size, 168px);
-  left: calc(var(--lens-x) - var(--lens-radius, 84px));
-  top: calc(var(--lens-y) - var(--lens-radius, 84px));
-  z-index: 25;
-  pointer-events: none;
-  opacity: 0;
-  transform: scale(0.65);
-  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: left, top, transform, opacity;
-  overflow: visible;
-}
-
-.lensRigActive {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* 100% Round Lens Glass with Zoom Optics */
-.lensFollower {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  background: #00A854; /* Emerald green */
-  border: 3.5px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 
-    0 16px 36px rgba(0, 0, 0, 0.32),
-    0 4px 16px rgba(0, 168, 84, 0.5),
-    inset 0 0 24px rgba(0, 0, 0, 0.25),
-    inset 0 2px 6px rgba(255, 255, 255, 0.7);
-  z-index: 2;
-}
-
-/* Specular glass glare & convex lens sheen */
-.lensFollower::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 25%,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0.15) 40%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  pointer-events: none;
-  z-index: 10;
-  box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.35);
-}
-
-/* Inner optical glass bevel ring */
-.lensFollower::before {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  pointer-events: none;
-  z-index: 11;
-}
-
-/* Realistic Magnifying Glass Handle */
-.lensHandle {
-  position: absolute;
-  top: calc(50% + (var(--lens-radius, 84px) * 0.65));
-  left: calc(50% + (var(--lens-radius, 84px) * 0.65));
+.heroTopFlex {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding-bottom: 32px;
+}
+
+@media (min-width: 1024px) {
+  .heroTopFlex {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+}
+
+/* Left: Headline */
+.headlineCol {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pillBadge {
+  display: inline-flex;
   align-items: center;
-  transform-origin: top center;
-  transform: rotate(-45deg);
-  z-index: 1;
-  pointer-events: none;
-  filter: drop-shadow(4px 10px 18px rgba(0, 0, 0, 0.42));
-}
-
-.handleNeck {
-  width: 14px;
-  height: 16px;
-  background: linear-gradient(90deg, #9ca3af 0%, #f3f4f6 45%, #6b7280 100%);
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 5px rgba(0, 0, 0, 0.25);
-  margin-top: -6px;
-}
-
-.handleGrip {
-  width: 18px;
-  height: 74px;
-  background: linear-gradient(90deg, #0d1b36 0%, #1e3a8a 40%, #0f172a 100%);
-  border-radius: 6px 6px 10px 10px;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 
-    inset 2px 0 4px rgba(255, 255, 255, 0.25),
-    inset -2px 0 4px rgba(0, 0, 0, 0.6),
-    0 4px 14px rgba(0, 0, 0, 0.35);
-  position: relative;
-}
-
-.handleGrip::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 12px;
-  background: linear-gradient(90deg, #9ca3af 0%, #ffffff 50%, #6b7280 100%);
-  border-radius: 0 0 8px 8px;
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-/* Optical Magnification: text is zoomed around the exact cursor coordinates */
-.lensTextInner {
-  position: absolute;
-  left: calc(-1 * var(--lens-x) + var(--lens-radius, 84px));
-  top: calc(-1 * var(--lens-y) + var(--lens-radius, 84px));
-  width: var(--title-width, 1400px);
-  pointer-events: none;
-  transform-origin: var(--lens-x) var(--lens-y);
-  transform: scale(var(--lens-zoom, 1.38));
-  will-change: transform, left, top;
-}
-
-/* --- Distinct Colors Inside the Lens for Each Line --- */
-
-/* Line 1: Pure Crisp White with Gold Double Arrow */
-.lensTextInner .lineOne {
-  color: #FFFFFF !important;
-}
-.lensTextInner .lineOne span {
-  color: #FFFFFF !important;
-  -webkit-text-fill-color: #FFFFFF !important;
-}
-.lensTextInner .lineOne .doubleArrowIcon svg path {
-  stroke: #FFE600 !important;
-}
-
-/* Line 2: Vibrant Electric Canary Yellow */
-.lensTextInner .lineTwo {
-  color: #FFE600 !important;
-}
-.lensTextInner .lineTwo span {
-  color: #FFE600 !important;
-  -webkit-text-fill-color: #FFE600 !important;
-}
-.lensTextInner .lineTwo .headlineNavy {
-  color: #FFE600 !important;
-  -webkit-text-fill-color: #FFE600 !important;
-}
-
-/* Line 3: Warm Radiant Coral & Sunset Gold Gradient */
-.lensTextInner .lineThree {
-  color: #FFCDB2 !important;
-}
-.lensTextInner .lineThree > span:first-child {
-  color: #FFCDB2 !important;
-  -webkit-text-fill-color: #FFCDB2 !important;
-}
-.lensTextInner .lineThree .headlineGradient {
-  color: #FF7043 !important;
-  background: linear-gradient(135deg, #FF6B4A 0%, #FFD166 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* CTA button inside lens: Pure White pill with Emerald typography */
-.lensTextInner .inlineCtaBtn {
-  background: #FFFFFF !important;
-  color: #007A3D !important;
-  border-color: #FFE600 !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
-}
-.lensTextInner .ctaBtnArrowWrap {
-  background: #007A3D !important;
-  color: #FFFFFF !important;
-}
-
-/* Floating Sleek Studio Summary */
-.heroIntroBrief {
-  position: absolute;
-  top: 6px;
-  right: 0;
-  max-width: 380px;
-  font-size: clamp(14px, 1.15vw, 16px);
-  line-height: 1.55;
-  color: #5C6E87;
-  font-weight: 500;
-  z-index: 5;
-  text-align: left;
-}
-
-.introBrand {
-  color: #1B3360;
-  font-weight: 800;
-}
-
-.introHighlight {
-  color: #1B3360;
+  gap: 8px;
+  font-size: 11px;
   font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--primary-orange);
 }
 
-.introOrange {
-  color: #FC6235;
+.pulseDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--primary-orange);
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+.mainTitle {
+  font-size: clamp(34px, 4.4vw, 58px);
   font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1.2px;
+  color: #0B132B;
+  margin: 0;
 }
 
-/* Bento Grid */
-.bentoGrid {
+.titleHighlight {
+  color: var(--primary-orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.boltIcon {
+  color: var(--primary-orange);
+  vertical-align: middle;
+}
+
+/* Right: Subtext & CTAs */
+.subtextCol {
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heroDesc {
+  font-size: 15px;
+  color: #4A5568;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.brandBold {
+  font-weight: 700;
+  color: #0B132B;
+}
+
+.keywordBold {
+  font-weight: 600;
+  color: #0B132B;
+}
+
+.heroCtaRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primaryCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: 9999px;
+  background-color: var(--primary-orange);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(255, 90, 43, 0.28);
+  transition: all 0.25s ease;
+}
+
+.primaryCtaBtn:hover {
+  background-color: #E44A1E;
+  box-shadow: 0 6px 20px rgba(255, 90, 43, 0.4);
+  transform: translateY(-1px);
+}
+
+.secondaryCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-light);
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.secondaryCtaBtn:hover {
+  color: #0B132B;
+  border-color: #94A3B8;
+  background-color: #F8FAFC;
+}
+
+/* Visual Cards Grid */
+.visualCardsGrid {
   display: grid;
-  grid-template-columns: 310px 1.55fr 200px 1.15fr;
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 20px;
   align-items: stretch;
 }
 
-/* Bento Card 1: Electric Blue / Orange Hub */
-.bentoActionCard {
-  background: var(--gradient-navy-card);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  color: #FFFFFF;
+@media (min-width: 768px) {
+  .visualCardsGrid {
+    grid-template-columns: 7fr 5fr;
+  }
+}
+
+/* Card 1: What We Do */
+.whatWeDoCard {
+  border-radius: 18px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-light);
+  padding: 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 16px 40px rgba(11, 23, 46, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.bentoActionCard::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 140px;
-  height: 140px;
-  background: radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
-  pointer-events: none;
+.whatWeDoCard:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
 }
 
-.actionPillsRow {
+.cardTopBar {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.pillBtnLight {
-  display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #FFFFFF;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 10px 18px;
-  border-radius: var(--radius-full);
-  transition: all 0.25s ease;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-light);
+  gap: 8px;
 }
 
-.pillBtnLight:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateX(4px);
-}
-
-.pillBtnOrange {
-  display: inline-flex;
+.badgeLeft {
+  display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: var(--primary-orange);
-  color: #FFFFFF;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 10px 18px;
-  border-radius: var(--radius-full);
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 15px rgba(252, 98, 53, 0.3);
+  gap: 8px;
 }
 
-.pillBtnOrange:hover {
-  background: #FF5D37;
-  transform: translateX(4px);
+.pulseDotSmall {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--primary-orange);
+  animation: pulse 2s infinite;
 }
 
-.bentoStatTag {
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: var(--radius-md);
-  padding: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.bentoStatNumber {
-  font-size: 26px;
+.badgeLabel {
+  font-size: 11px;
   font-weight: 800;
-  color: #FFFFFF;
-  line-height: 1;
-  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #0B132B;
 }
 
-.bentoStatLabel {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
+.badgeRightTag {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: var(--primary-orange);
+  background-color: #FFF7ED;
+  border: 1px solid #FFEDD5;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.cardContent {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cardMainHeading {
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 800;
+  color: #0B132B;
+  letter-spacing: -0.6px;
+  margin: 0;
+}
+
+.cardParagraph {
+  font-size: 14.5px;
+  color: #4A5568;
+  line-height: 1.65;
+  max-width: 540px;
+  margin: 0;
+}
+
+.techPillRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 6px;
+}
+
+.techPillOrange {
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  padding: 5px 13px;
+  border-radius: 9999px;
+  background-color: #FFF7ED;
+  color: var(--primary-orange);
+  border: 1px solid #FFEDD5;
+  font-weight: 600;
+}
+
+.techPillGray {
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  padding: 5px 13px;
+  border-radius: 9999px;
+  background-color: #F1F5F9;
+  color: #334155;
   font-weight: 500;
 }
 
-/* Bento Card 2: 3D Team Image */
-.bentoTeamCard {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-  background: #FFFFFF;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-light);
-  min-height: 280px;
-}
-
-.bentoTeamImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.bentoTeamCard:hover .bentoTeamImg {
-  transform: scale(1.03);
-}
-
-.bentoTeamOverlay {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  right: 16px;
-  background: rgba(16, 30, 53, 0.75);
-  backdrop-filter: blur(12px);
-  padding: 12px 18px;
-  border-radius: var(--radius-md);
-  color: #FFFFFF;
+.cardBottomBar {
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.teamBadgeText {
-  font-size: 13px;
-  font-weight: 700;
-}
-
-/* Bento Card 3: Rotating Emblem */
-.bentoEmblemCard {
-  background: #FFF8F4;
-  border: 1px solid #FFE4D6;
-  border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  position: relative;
-  box-shadow: var(--shadow-sm);
-  overflow: hidden;
-}
-
-.emblemWrapper {
-  position: relative;
-  width: 130px;
-  height: 130px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rotatingCircleText {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  animation: spinSlow 18s linear infinite;
-}
-
-.emblemCenterIcon {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--primary-orange);
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-orange);
-  z-index: 2;
-}
-
-/* Bento Card 4: Architecture Core */
-.bentoStackCard {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-  background: #FFFFFF;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-light);
-  min-height: 280px;
-}
-
-.bentoStackImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.bentoStackCard:hover .bentoStackImg {
-  transform: scale(1.03);
-}
-
-.bentoStackTag {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
   font-size: 12px;
-  font-weight: 700;
-  color: var(--primary-navy);
-  border: 1px solid var(--border-light);
+  font-family: var(--font-mono, monospace);
+  color: #64748B;
 }
 
-/* Bento Card 5: Trust Banner (Full width below) */
-.trustBanner {
-  margin-top: 24px;
-  background: var(--gradient-navy-banner);
-  border-radius: var(--radius-lg);
-  padding: 26px 36px;
-  display: flex;
+.footerNoteLeft {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 36px;
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 16px 45px rgba(8, 17, 34, 0.45);
-  position: relative;
-  overflow: hidden;
+  gap: 6px;
 }
 
-.trustBanner::before {
-  content: "";
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(252, 98, 53, 0.16) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.trustCopy {
-  max-width: 480px;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #CAD5E2;
-}
-
-.trustCopy strong {
-  color: #FFFFFF;
-}
-
-.trustLogosRow {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
-.trustClient {
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  color: #8E9EAF;
-  text-transform: uppercase;
-  transition: color 0.25s ease;
-}
-
-.trustClient:hover {
+.heartIcon {
   color: var(--primary-orange);
 }
 
-@media (max-width: 1200px) {
-  .heroIntroBrief {
-    position: static;
-    margin-top: 24px;
-    max-width: 620px;
+.footerNoteRight {
+  color: var(--primary-orange);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Card 2: Team Asset Showcase */
+.teamShowcaseCard {
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  background-color: #0F172A;
+}
+
+.teamBgImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.teamShowcaseCard:hover .teamBgImg {
+  transform: scale(1.05);
+}
+
+.teamGradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11, 19, 43, 0.95) 0%, rgba(11, 19, 43, 0.45) 55%, transparent 100%);
+  pointer-events: none;
+}
+
+.teamMeta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.teamSubTag {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: var(--primary-orange);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  display: block;
+}
+
+.teamTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.3px;
+  margin: 2px 0 4px 0;
+}
+
+.teamDesc {
+  font-size: 12px;
+  color: #CBD5E1;
+  max-width: 290px;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.teamIconBubble {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--primary-orange);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Trust Strip */
+.trustClientStrip {
+  margin-top: 20px;
+  border-radius: 16px;
+  background-color: #0B132B;
+  color: #FFFFFF;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid #1E293B;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .trustClientStrip {
+    flex-direction: row;
   }
 }
 
-@media (max-width: 1180px) {
-  .bentoGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .bentoEmblemCard {
-    min-height: 240px;
-  }
+.trustLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #CBD5E1;
 }
 
-@media (max-width: 900px) {
-  .headline {
-    font-size: clamp(38px, 6.8vw, 54px);
-    letter-spacing: -1.5px;
-  }
-  .doubleArrowIcon svg {
-    width: 42px;
-    height: 28px;
-  }
-  .trustBanner {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
+.verifyIcon {
+  color: var(--primary-orange);
+  flex-shrink: 0;
 }
 
-@media (max-width: 640px) {
-  .bentoGrid {
-    grid-template-columns: 1fr;
-  }
-  .headline {
-    font-size: clamp(30px, 7.8vw, 40px);
-    letter-spacing: -1px;
-  }
-  .inlineCtaBtn {
-    padding: 8px 18px 8px 10px;
-    font-size: 14px;
-  }
+.trustHighlight {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.trustRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.deployPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #E2E8F0;
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  letter-spacing: 0.5px;
 }

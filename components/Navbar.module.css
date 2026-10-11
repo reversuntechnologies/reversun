@@ -37,14 +37,15 @@
 }
 
 .logoImg {
-  height: 44px;
+  height: 40px;
   width: auto;
+  max-width: 200px;
   object-fit: contain;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .logoArea:hover .logoImg {
-  transform: rotate(-12deg) scale(1.1);
+  transform: scale(1.03);
 }
 
 .logoText {
@@ -66,66 +67,7 @@
   transform: scale(1.05);
 }
 
-.searchBar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #EEF2F6;
-  border: 1.5px solid rgba(27, 51, 96, 0.08);
-  padding: 8px 18px;
-  border-radius: var(--radius-full);
-  color: var(--text-muted);
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  min-width: 230px;
-}
 
-.searchBar:hover {
-  background: #FFFFFF;
-  border-color: rgba(252, 98, 53, 0.4);
-  color: var(--text-main);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(252, 98, 53, 0.12), 0 2px 8px rgba(27, 51, 96, 0.06);
-}
-
-.searchIconGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 3px);
-  gap: 2px;
-  align-items: center;
-}
-
-.gridDot {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: var(--text-muted);
-  transition: background-color 0.25s ease, transform 0.25s ease;
-}
-
-.searchBar:hover .gridDot {
-  background: var(--primary-orange);
-  transform: scale(1.2);
-}
-
-.searchShortcut {
-  margin-left: auto;
-  font-size: 11px;
-  font-weight: 600;
-  background: #FFFFFF;
-  padding: 2px 7px;
-  border-radius: 4px;
-  color: var(--text-light);
-  border: 1px solid #DFE5EC;
-  transition: all 0.25s ease;
-}
-
-.searchBar:hover .searchShortcut {
-  border-color: rgba(252, 98, 53, 0.35);
-  color: var(--primary-orange);
-  background: var(--orange-light);
-}
 
 .navLinks {
   display: flex;
@@ -241,6 +183,12 @@
 
 .ctaBtn:hover::before {
   left: 100%;
+}
+
+.activeCtaBtn {
+  background: var(--primary-orange) !important;
+  border-color: rgba(252, 98, 53, 0.5) !important;
+  box-shadow: 0 4px 20px rgba(252, 98, 53, 0.4) !important;
 }
 
 .ctaBtn svg {

@@ -1,0 +1,546 @@
+.clientsPageWrapper {
+  padding: 32px 0 60px 0;
+  background-color: #FAF9F6;
+  min-height: calc(100vh - 160px);
+  position: relative;
+}
+
+/* Main 2-Column Hero Grid */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 25% calc(75% - 32px);
+    gap: 32px;
+  }
+}
+
+/* Left Column */
+.leftCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 4px;
+}
+
+.clientsBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background-color: rgba(255, 90, 43, 0.1);
+  color: var(--primary-orange);
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.badgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary-orange);
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.headline {
+  font-size: clamp(30px, 3.2vw, 42px);
+  font-weight: 800;
+  color: #0B132B;
+  text-transform: uppercase;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.headlineFlexRow {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.comingSoonPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  background-color: #0B132B;
+  color: #FFFFFF;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.pingDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary-orange);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+.subtext {
+  font-size: 14.5px;
+  color: #565D79;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* Status Indicator Rows */
+.statusRowsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  border: 1px solid #ECEEEF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.statusRowLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotOrange {
+  background-color: var(--primary-orange);
+}
+
+.dotGreen {
+  background-color: #10B981;
+}
+
+.dotNavy {
+  background-color: #0B132B;
+}
+
+.statusTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0B132B;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusDivider {
+  color: rgba(86, 93, 121, 0.4);
+}
+
+.statusDesc {
+  font-size: 12px;
+  color: #565D79;
+}
+
+.statusTagOrange {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-orange);
+}
+
+.statusTagGreen {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: #059669;
+}
+
+.statusTagNavy {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: #0B132B;
+}
+
+/* Right Column */
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Listing Soon Box */
+.listingSoonCard {
+  border-radius: 18px;
+  background-color: #FFFFFF;
+  border: 1px solid #ECEEEF;
+  padding: 28px;
+  box-shadow: 0 2px 12px rgba(11, 19, 43, 0.04);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cardGlow {
+  position: absolute;
+  top: -64px;
+  right: -64px;
+  width: 224px;
+  height: 224px;
+  border-radius: 50%;
+  background-color: rgba(255, 90, 43, 0.1);
+  filter: blur(32px);
+  pointer-events: none;
+}
+
+.cardTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.cardDisclosure {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.disclosureIconBox {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background-color: rgba(255, 90, 43, 0.1);
+  color: var(--primary-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.disclosureBadge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  background-color: rgba(255, 90, 43, 0.1);
+}
+
+.disclosureStage {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: #565D79;
+}
+
+.cardCenterBody {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.cardBigTitle {
+  font-size: clamp(34px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #0B132B;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.orangeDots {
+  color: var(--primary-orange);
+}
+
+.cardBodyDesc {
+  font-size: 14px;
+  color: #565D79;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0;
+}
+
+.cardBottomPillRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid #ECEEEF;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 640px) {
+  .cardBottomPillRow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pillarItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: #565D79;
+}
+
+.bulletDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Dark Navy Active Deployments Banner */
+.activeDeploymentsBanner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background-color: #0B132B;
+  color: #FFFFFF;
+  padding: 24px 28px;
+  box-shadow: 0 10px 30px rgba(11, 19, 43, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .activeDeploymentsBanner {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.bannerInfo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 440px;
+}
+
+.bannerPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-orange);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.bannerTitle {
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.bannerDesc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.bannerBtnGroup {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.bannerPrimaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  background-color: var(--primary-orange);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(255, 90, 43, 0.3);
+  transition: all 0.2s ease;
+}
+
+.bannerPrimaryBtn:hover {
+  background-color: #E04A1F;
+  transform: translateY(-1px);
+}
+
+.bannerSecondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.bannerSecondaryBtn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Bottom Strip: Precision Engineering Benchmarks */
+.benchmarksStrip {
+  margin-top: 32px;
+  border-radius: 18px;
+  background-color: #FFFFFF;
+  border: 1px solid #ECEEEF;
+  padding: 18px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .benchmarksStrip {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.benchmarkLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.benchmarkIconBox {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background-color: #F2F4F5;
+  color: #0B132B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.benchmarkTitleCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.benchmarkMainTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0B132B;
+}
+
+.benchmarkSubtitle {
+  font-size: 12px;
+  color: #565D79;
+}
+
+.benchmarkMetricsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.benchmarkMetricCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.benchmarkMetricOrange {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary-orange);
+  line-height: 1.1;
+}
+
+.benchmarkMetricNavy {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0B132B;
+  line-height: 1.1;
+}
+
+.benchmarkMetricLabel {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #565D79;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-top: 2px;
+}

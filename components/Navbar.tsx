@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, Search, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 interface NavbarProps {
@@ -28,47 +28,25 @@ export default function Navbar({ onOpenSearch, onOpenContact }: NavbarProps) {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
-    { name: "Product", href: "/product" },
+    { name: "Products", href: "/product" },
     { name: "Clients", href: "/clients" },
-    { name: "Contact Us", href: "/contact" },
   ];
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
       <div className={`container ${styles.navContainer}`}>
         {/* Brand Logo */}
-        <Link href="/" className={styles.logoArea} onClick={() => setMobileOpen(false)}>
+        <Link href="/" className={styles.logoArea} onClick={() => setMobileOpen(false)} aria-label="Reversun Home">
           <Image
-            src="/logo-icon.png"
-            alt="Reversun Logo"
-            width={44}
-            height={44}
-            style={{ width: "auto", height: "44px" }}
+            src="/REVERSUN LOGO.svg"
+            alt="Reversun"
+            width={180}
+            height={42}
+            style={{ width: "auto", height: "40px" }}
             className={styles.logoImg}
             priority
           />
-          <span className={styles.logoText}>
-            REVER<span className={styles.logoTextOrange}>SUN</span>
-          </span>
         </Link>
-
-        {/* Quick Search Pill (Like DoodleByte Reference) */}
-        <button
-          className={styles.searchBar}
-          onClick={onOpenSearch}
-          aria-label="Search Reversun features and services"
-        >
-          <div className={styles.searchIconGrid}>
-            <span className={styles.gridDot} />
-            <span className={styles.gridDot} />
-            <span className={styles.gridDot} />
-            <span className={styles.gridDot} />
-            <span className={styles.gridDot} />
-            <span className={styles.gridDot} />
-          </div>
-          <span>Search Services, Tech...</span>
-          <span className={styles.searchShortcut}>⌘K</span>
-        </button>
 
         {/* Desktop Navigation Links */}
         <nav>
@@ -92,15 +70,15 @@ export default function Navbar({ onOpenSearch, onOpenContact }: NavbarProps) {
           </ul>
         </nav>
 
-        {/* Action Button */}
-        <button
-          className={styles.ctaBtn}
-          onClick={onOpenContact}
-          id="nav-lets-talk-btn"
+        {/* Contact Us Action Link */}
+        <Link
+          href="/contact"
+          className={`${styles.ctaBtn} ${pathname === "/contact" ? styles.activeCtaBtn : ""}`}
+          id="nav-contact-btn"
+          style={{ textDecoration: "none" }}
         >
-          <span>Let&apos;s Talk</span>
-          <ArrowUpRight size={18} />
-        </button>
+          <span>Contact Us</span>
+        </Link>
 
         {/* Mobile Hamburger Toggle */}
         <button
@@ -115,18 +93,6 @@ export default function Navbar({ onOpenSearch, onOpenContact }: NavbarProps) {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <div className={styles.mobileDrawer}>
-          <button
-            className={styles.searchBar}
-            onClick={() => {
-              setMobileOpen(false);
-              onOpenSearch();
-            }}
-            style={{ display: "flex", width: "100%" }}
-          >
-            <Search size={16} />
-            <span>Search Services, Tech & Products...</span>
-          </button>
-
           <ul className={styles.mobileNavLinks}>
             {navItems.map((item) => {
               const isActive = pathname === item.href;
@@ -140,24 +106,20 @@ export default function Navbar({ onOpenSearch, onOpenContact }: NavbarProps) {
                     onClick={() => setMobileOpen(false)}
                   >
                     <span>{item.name}</span>
-                    <ArrowUpRight size={16} />
                   </Link>
                 </li>
               );
             })}
           </ul>
 
-          <button
+          <Link
+            href="/contact"
             className={styles.ctaBtn}
-            onClick={() => {
-              setMobileOpen(false);
-              onOpenContact();
-            }}
-            style={{ width: "100%", justifyContent: "center" }}
+            onClick={() => setMobileOpen(false)}
+            style={{ width: "100%", justifyContent: "center", textDecoration: "none" }}
           >
-            <span>Let&apos;s Talk</span>
-            <ArrowUpRight size={18} />
-          </button>
+            <span>Contact Us</span>
+          </Link>
         </div>
       )}
     </header>

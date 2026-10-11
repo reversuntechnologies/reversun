@@ -10,7 +10,7 @@ export default function SideNumberNav() {
   const navItems = [
     { num: "01", label: "Home", href: "/" },
     { num: "02", label: "Services", href: "/services" },
-    { num: "03", label: "Product", href: "/product" },
+    { num: "03", label: "Products", href: "/product" },
     { num: "04", label: "Clients", href: "/clients" },
     { num: "05", label: "Contact Us", href: "/contact" },
   ];

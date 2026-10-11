@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CommandPalette from "./CommandPalette";
@@ -8,6 +9,7 @@ import ProjectModal from "./ProjectModal";
 import SideNumberNav from "./SideNumberNav";
 
 export default function SiteLayout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
   const [searchOpen, setSearchOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTopic, setModalTopic] = useState("");
@@ -20,21 +22,21 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <Navbar
-        onOpenSearch={() => setSearchOpen(true)}
         onOpenContact={() => handleOpenContact("Nav Consultation")}
       />
 
       {/* Floating Side Number Navigation (01, 02, 03, 04, 05) */}
       <SideNumberNav />
 
-      <main style={{ minHeight: "calc(100vh - 160px)" }}>{children}</main>
+      <main
+        key={pathname}
+        className="pageTransitionWrapper"
+        style={{ minHeight: "calc(100vh - 160px)" }}
+      >
+        {children}
+      </main>
 
       <Footer onOpenContact={() => handleOpenContact("Footer Consultation")} />
-
-      <CommandPalette
-        isOpen={searchOpen}
-        onClose={() => setSearchOpen(false)}
-      />
 
       <ProjectModal
         isOpen={modalOpen}

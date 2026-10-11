@@ -1,23 +1,48 @@
-.headerWrapper {
-  padding: 24px 0 44px 0;
-  background: linear-gradient(180deg, #FBF9F7 0%, #F5F3EF 100%);
-  border-bottom: 1px solid rgba(27, 51, 96, 0.08);
+.headerBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
   position: relative;
   overflow: visible;
-  text-align: center;
+  width: 100%;
 }
 
-/* Big Bold Headline Container matching DoodleByte Screenshot */
+.eyebrowBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--orange-light);
+  color: var(--primary-orange);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  border: 1px solid rgba(252, 98, 53, 0.2);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-orange);
+}
+
+/* Big Bold Headline Container matching DoodleByte style */
 .titleArea {
   position: relative;
   cursor: none !important;
   overflow: visible;
-  display: inline-block;
-  margin: 0 auto 24px auto;
+  display: block;
+  margin: 0 0 18px 0;
   user-select: none;
+  width: 100%;
   --lens-size: 140px;
   --lens-radius: 70px;
-  --lens-zoom: 1.38;
+  --lens-zoom: 1.4;
   --lens-x: -300px;
   --lens-y: -300px;
 }
@@ -28,16 +53,17 @@
 
 .bigTitle {
   font-family: 'Montserrat', var(--font-montserrat), var(--font-sans), sans-serif !important;
-  font-size: clamp(44px, 5.8vw, 84px);
-  font-weight: 500 !important;
+  font-size: clamp(34px, 3.6vw, 54px);
+  font-weight: 600 !important;
   color: #101E35;
-  letter-spacing: -1px;
+  letter-spacing: -1.2px;
   line-height: 1.15;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -45,215 +71,143 @@
 .titleRow {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
+  margin-top: 4px;
 }
 
 /* Embedded preview card between words in the title */
 .inlineCardPreview {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: linear-gradient(135deg, #1B3360 0%, #17376F 100%);
   color: #FFFFFF;
-  padding: 8px 20px;
-  border-radius: 18px;
-  font-size: clamp(14px, 1.4vw, 18px);
-  font-weight: 700;
-  letter-spacing: 0px;
-  text-transform: none;
-  box-shadow: 0 8px 24px rgba(27, 51, 96, 0.25);
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  transform: translateY(-4px);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: clamp(11px, 1.2vw, 15px);
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 14px rgba(27, 51, 96, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   vertical-align: middle;
+  text-transform: uppercase;
 }
 
 .inlinePreviewDot {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--primary-orange);
-  box-shadow: 0 0 10px var(--primary-orange);
+  background: #FC6235;
+  box-shadow: 0 0 10px #FC6235;
+  animation: pulseGlow 2s infinite ease-in-out;
+  flex-shrink: 0;
 }
 
-/* Container Rig coordinating Lens Glass + Handle together */
+/* Realistic Magnifying Zoom Glass Rig with Handle */
 .lensRig {
   position: absolute;
-  width: var(--lens-size, 140px);
-  height: var(--lens-size, 140px);
-  left: calc(var(--lens-x) - var(--lens-radius, 70px));
-  top: calc(var(--lens-y) - var(--lens-radius, 70px));
-  z-index: 25;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   opacity: 0;
-  transform: scale(0.65);
-  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: left, top, transform, opacity;
-  overflow: visible;
+  transition: opacity 0.2s ease;
+  z-index: 40;
 }
 
 .lensRigActive {
   opacity: 1;
-  transform: scale(1);
 }
 
-/* 100% Round Lens Glass with Zoom Optics */
 .lensFollower {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: calc(var(--lens-y) - var(--lens-radius));
+  left: calc(var(--lens-x) - var(--lens-radius));
+  width: var(--lens-size);
+  height: var(--lens-size);
   border-radius: 50%;
   overflow: hidden;
-  background: #00A854; /* Emerald green */
-  border: 3.5px solid rgba(255, 255, 255, 0.95);
+  border: 4px solid #FFFFFF;
+  background: rgba(255, 255, 255, 0.4);
   box-shadow: 
-    0 16px 36px rgba(0, 0, 0, 0.32),
-    0 4px 16px rgba(0, 168, 84, 0.5),
-    inset 0 0 24px rgba(0, 0, 0, 0.25),
-    inset 0 2px 6px rgba(255, 255, 255, 0.7);
-  z-index: 2;
-}
-
-/* Specular glass glare & convex lens sheen */
-.lensFollower::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 25%,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0.15) 40%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  pointer-events: none;
-  z-index: 10;
-  box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.35);
-}
-
-/* Inner optical glass bevel ring */
-.lensFollower::before {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  pointer-events: none;
-  z-index: 11;
-}
-
-/* Realistic Magnifying Glass Handle */
-.lensHandle {
-  position: absolute;
-  top: calc(50% + (var(--lens-radius, 70px) * 0.65));
-  left: calc(50% + (var(--lens-radius, 70px) * 0.65));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform-origin: top center;
-  transform: rotate(-45deg);
-  z-index: 1;
-  pointer-events: none;
-  filter: drop-shadow(4px 10px 18px rgba(0, 0, 0, 0.42));
-}
-
-.handleNeck {
-  width: 13px;
-  height: 14px;
-  background: linear-gradient(90deg, #9ca3af 0%, #f3f4f6 45%, #6b7280 100%);
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 5px rgba(0, 0, 0, 0.25);
-  margin-top: -5px;
-}
-
-.handleGrip {
-  width: 16px;
-  height: 64px;
-  background: linear-gradient(90deg, #0d1b36 0%, #1e3a8a 40%, #0f172a 100%);
-  border-radius: 6px 6px 10px 10px;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 
-    inset 2px 0 4px rgba(255, 255, 255, 0.25),
-    inset -2px 0 4px rgba(0, 0, 0, 0.6),
-    0 4px 14px rgba(0, 0, 0, 0.35);
-  position: relative;
-}
-
-.handleGrip::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 10px;
-  background: linear-gradient(90deg, #9ca3af 0%, #ffffff 50%, #6b7280 100%);
-  border-radius: 0 0 8px 8px;
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-/* Optical Magnification: text is zoomed around the exact cursor coordinates */
-.lensTextInner {
-  position: absolute;
-  left: calc(-1 * var(--lens-x) + var(--lens-radius, 70px));
-  top: calc(-1 * var(--lens-y) + var(--lens-radius, 70px));
-  width: var(--title-width, 1100px);
-  pointer-events: none;
-  transform-origin: var(--lens-x) var(--lens-y);
-  transform: scale(var(--lens-zoom, 1.38));
+    0 16px 36px rgba(0, 0, 0, 0.35),
+    0 4px 12px rgba(252, 98, 53, 0.4),
+    inset 0 0 20px rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(0.5px);
   will-change: transform, left, top;
 }
 
-/* --- Distinct Colors Inside the Lens for Each Line --- */
-.lensTextInner .bigTitle > div:nth-child(1) {
-  color: #FFFFFF !important;
-  -webkit-text-fill-color: #FFFFFF !important;
+.lensTextInner {
+  position: absolute;
+  width: var(--title-width, 420px);
+  transform: scale(var(--lens-zoom))
+    translate(
+      calc(0px - var(--lens-x) + (var(--lens-radius) / var(--lens-zoom))),
+      calc(0px - var(--lens-y) + (var(--lens-radius) / var(--lens-zoom)))
+    );
+  transform-origin: 0 0;
+  pointer-events: none;
+  user-select: none;
 }
 
-.lensTextInner .bigTitle > div:nth-child(2) {
-  color: #FFE600 !important;
-  -webkit-text-fill-color: #FFE600 !important;
-}
-
-.lensTextInner .titleRow {
-  color: #FFCDB2 !important;
-}
-
-.lensTextInner .titleRow > span {
-  color: #FFCDB2 !important;
-  -webkit-text-fill-color: #FFCDB2 !important;
+.lensTextInner .bigTitle {
+  color: #0A162B !important;
 }
 
 .lensTextInner .inlineCardPreview {
-  background: #FFFFFF !important;
-  color: #007A3D !important;
-  border: 1px solid #FFE600 !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
+  background: linear-gradient(135deg, #FC6235 0%, #FF5D37 100%) !important;
+  box-shadow: 0 4px 18px rgba(252, 98, 53, 0.5) !important;
 }
 
-.lensTextInner .inlinePreviewDot {
-  background: #007A3D !important;
-  box-shadow: none;
+/* Glass Handle */
+.lensHandle {
+  position: absolute;
+  top: calc(var(--lens-y) + (var(--lens-radius) * 0.65));
+  left: calc(var(--lens-x) + (var(--lens-radius) * 0.65));
+  width: 14px;
+  height: 60px;
+  transform: rotate(-45deg);
+  transform-origin: top center;
+  pointer-events: none;
+  filter: drop-shadow(4px 12px 10px rgba(0, 0, 0, 0.45));
 }
 
-/* Subtitle paragraph */
+.handleNeck {
+  width: 8px;
+  height: 12px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #8A98A8 0%, #CBD5E1 50%, #64748B 100%);
+  border-radius: 2px 2px 0 0;
+}
+
+.handleGrip {
+  width: 12px;
+  height: 48px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, #101E35 0%, #1E3D73 40%, #0A1424 100%);
+  border-radius: 4px 4px 8px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.25);
+}
+
+/* Subtitle */
 .subtitle {
-  max-width: 680px;
-  margin: 0 auto 32px auto;
-  font-size: clamp(15px, 1.4vw, 18px);
-  line-height: 1.65;
-  color: #5C6E87;
-  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+  text-align: left;
 }
 
-/* Horizontal Category Pills with Colored Dots (from DoodleByte screenshot) */
+/* Category Pills - Columnar / wrapped tags */
 .pillList {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -265,52 +219,40 @@
   gap: 8px;
   background: #FFFFFF;
   border: 1px solid var(--border-light);
-  padding: 8px 18px;
   border-radius: var(--radius-full);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--primary-navy);
+  padding: 8px 16px;
   box-shadow: 0 2px 8px rgba(27, 51, 96, 0.04);
-  transition: all 0.25s ease;
-  user-select: none;
+  align-self: flex-start;
+  transition: all 0.2s ease;
 }
 
 .pillItem:hover {
-  transform: translateY(-2px);
   border-color: rgba(252, 98, 53, 0.4);
-  box-shadow: 0 6px 16px rgba(27, 51, 96, 0.08);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
 }
 
 .pillDot {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
 .pillLabel {
-  color: var(--primary-navy);
+  font-size: 12px;
   font-weight: 800;
+  color: var(--primary-navy);
+  letter-spacing: 0.5px;
 }
 
 .pillSub {
+  font-size: 12px;
   color: var(--text-muted);
   font-weight: 500;
 }
 
-@media (max-width: 900px) {
-  .bigTitle {
-    font-size: 46px;
-    letter-spacing: -1.5px;
-  }
-}
-
-@media (max-width: 600px) {
-  .bigTitle {
-    font-size: 34px;
-    letter-spacing: -1px;
-  }
-  .pillList {
-    justify-content: flex-start;
-  }
+.extraContent {
+  margin-top: 24px;
+  width: 100%;
 }

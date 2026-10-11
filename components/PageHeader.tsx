@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, type MouseEvent } from "react";
+import React, { useState, useRef, type MouseEvent, type ReactNode } from "react";
 import styles from "./PageHeader.module.css";
 
 interface Pill {
@@ -18,6 +18,7 @@ interface PageHeaderProps {
   previewText?: string;
   subtitle?: string;
   pills?: Pill[];
+  children?: ReactNode;
 }
 
 export default function PageHeader({
@@ -29,6 +30,7 @@ export default function PageHeader({
   previewText = "REVERSUN CORE",
   subtitle,
   pills = [],
+  children,
 }: PageHeaderProps) {
   const [isHovering, setIsHovering] = useState(false);
   const titleAreaRef = useRef<HTMLDivElement>(null);
@@ -54,100 +56,104 @@ export default function PageHeader({
 
   const handleMouseDown = () => {
     if (titleAreaRef.current) {
-      titleAreaRef.current.style.setProperty("--lens-size", "160px");
-      titleAreaRef.current.style.setProperty("--lens-radius", "80px");
-      titleAreaRef.current.style.setProperty("--lens-zoom", "1.48");
+      titleAreaRef.current.style.setProperty("--lens-size", "140px");
+      titleAreaRef.current.style.setProperty("--lens-radius", "70px");
+      titleAreaRef.current.style.setProperty("--lens-zoom", "1.45");
     }
   };
 
   const handleMouseUp = () => {
     if (titleAreaRef.current) {
-      titleAreaRef.current.style.setProperty("--lens-size", "140px");
-      titleAreaRef.current.style.setProperty("--lens-radius", "70px");
-      titleAreaRef.current.style.setProperty("--lens-zoom", "1.38");
+      titleAreaRef.current.style.setProperty("--lens-size", "120px");
+      titleAreaRef.current.style.setProperty("--lens-radius", "60px");
+      titleAreaRef.current.style.setProperty("--lens-zoom", "1.35");
     }
   };
 
   return (
-    <section className={styles.headerWrapper} aria-label={`${pageName} Header`}>
-      <div className="container">
-        {/* Big Bold Headline with Embedded Card & Interactive Round Lens */}
-        <div>
-          <div
-            ref={titleAreaRef}
-            className={styles.titleArea}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-          >
-            {/* Base Layer */}
-            <h1 className={styles.bigTitle}>
-              {titleLine1 && <div>{titleLine1}</div>}
-              {titleLine2 && <div>{titleLine2}</div>}
-              <div className={styles.titleRow}>
-                {titleLine3 && <span>{titleLine3}</span>}
-                <span className={styles.inlineCardPreview}>
-                  <span className={styles.inlinePreviewDot} />
-                  <span>{previewText}</span>
-                </span>
-                {titleLine4 && <span>{titleLine4}</span>}
-              </div>
-            </h1>
+    <div className={styles.headerBlock} aria-label={`${pageName} Header`}>
+      {/* Eyebrow Label */}
+      <div className={styles.eyebrowBadge}>
+        <span className={styles.eyebrowDot} />
+        <span>{pageName}</span>
+      </div>
 
-            {/* Realistic Magnifying Zoom Glass Rig with Handle */}
-            <div
-              className={`${styles.lensRig} ${
-                isHovering ? styles.lensRigActive : ""
-              }`}
-              aria-hidden="true"
-            >
-              <div className={styles.lensFollower}>
-                <div className={styles.lensTextInner}>
-                  <div className={styles.bigTitle}>
-                    {titleLine1 && <div>{titleLine1}</div>}
-                    {titleLine2 && <div>{titleLine2}</div>}
-                    <div className={styles.titleRow}>
-                      {titleLine3 && <span>{titleLine3}</span>}
-                      <span className={styles.inlineCardPreview}>
-                        <span className={styles.inlinePreviewDot} />
-                        <span>{previewText}</span>
-                      </span>
-                      {titleLine4 && <span>{titleLine4}</span>}
-                    </div>
-                  </div>
+      {/* Big Bold Headline with Embedded Card & Interactive Round Lens */}
+      <div
+        ref={titleAreaRef}
+        className={styles.titleArea}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+      >
+        {/* Base Layer */}
+        <h1 className={styles.bigTitle}>
+          {titleLine1 && <div>{titleLine1}</div>}
+          {titleLine2 && <div>{titleLine2}</div>}
+          <div className={styles.titleRow}>
+            {titleLine3 && <span>{titleLine3}</span>}
+            <span className={styles.inlineCardPreview}>
+              <span className={styles.inlinePreviewDot} />
+              <span>{previewText}</span>
+            </span>
+            {titleLine4 && <span>{titleLine4}</span>}
+          </div>
+        </h1>
+
+        {/* Realistic Magnifying Zoom Glass Rig with Handle */}
+        <div
+          className={`${styles.lensRig} ${
+            isHovering ? styles.lensRigActive : ""
+          }`}
+          aria-hidden="true"
+        >
+          <div className={styles.lensFollower}>
+            <div className={styles.lensTextInner}>
+              <div className={styles.bigTitle}>
+                {titleLine1 && <div>{titleLine1}</div>}
+                {titleLine2 && <div>{titleLine2}</div>}
+                <div className={styles.titleRow}>
+                  {titleLine3 && <span>{titleLine3}</span>}
+                  <span className={styles.inlineCardPreview}>
+                    <span className={styles.inlinePreviewDot} />
+                    <span>{previewText}</span>
+                  </span>
+                  {titleLine4 && <span>{titleLine4}</span>}
                 </div>
-              </div>
-
-              {/* Realistic Magnifying Glass Handle */}
-              <div className={styles.lensHandle}>
-                <div className={styles.handleNeck} />
-                <div className={styles.handleGrip} />
               </div>
             </div>
           </div>
+
+          <div className={styles.lensHandle}>
+            <div className={styles.handleNeck} />
+            <div className={styles.handleGrip} />
+          </div>
         </div>
-
-        {/* Subtitle Description */}
-        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
-
-        {/* Horizontal Category Pill Tags with Colored Indicator Dots */}
-        {pills.length > 0 && (
-          <ul className={styles.pillList}>
-            {pills.map((pill, idx) => (
-              <li key={idx} className={styles.pillItem}>
-                <span
-                  className={styles.pillDot}
-                  style={{ backgroundColor: pill.dot || "#FC6235" }}
-                />
-                <span className={styles.pillLabel}>{pill.label}</span>
-                {pill.sub && <span className={styles.pillSub}>{pill.sub}</span>}
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
-    </section>
+
+      {/* Subtitle Description */}
+      {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+
+      {/* Horizontal / Stacked Category Pill Tags with Colored Indicator Dots */}
+      {pills.length > 0 && (
+        <ul className={styles.pillList}>
+          {pills.map((pill, idx) => (
+            <li key={idx} className={styles.pillItem}>
+              <span
+                className={styles.pillDot}
+                style={{ backgroundColor: pill.dot || "#FC6235" }}
+              />
+              <span className={styles.pillLabel}>{pill.label}</span>
+              {pill.sub && <span className={styles.pillSub}>• {pill.sub}</span>}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* Optional Child Elements (e.g. Email channels for Contact) */}
+      {children && <div className={styles.extraContent}>{children}</div>}
+    </div>
   );
 }

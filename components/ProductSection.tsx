@@ -3,237 +3,239 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { 
-  Server, 
-  Workflow, 
-  BrainCircuit, 
+  Clock, 
+  Atom, 
   Check, 
   ArrowRight, 
-  Terminal, 
-  Activity, 
-  Sparkles,
+  ExternalLink,
+  Terminal,
+  Activity,
   Layers
 } from "lucide-react";
 import styles from "./ProductSection.module.css";
 
 export default function ProductSection({ onRequestDemo }: { onRequestDemo?: (productName?: string) => void }) {
   const router = useRouter();
-  const [activeProduct, setActiveProduct] = useState("cloudmesh");
+  const [activeProduct, setActiveProduct] = useState<"presenza" | "quanbit">("presenza");
 
-  const handleDemoAction = (productName: string) => {
+  const handleInquiry = (productName: string) => {
     if (onRequestDemo) {
       onRequestDemo(productName);
     } else {
-      router.push("/contact");
+      router.push(`/contact?product=${encodeURIComponent(productName)}`);
     }
   };
 
   const products = {
-    cloudmesh: {
-      id: "cloudmesh",
-      name: "Reversun CloudMesh™",
-      tagline: "Autonomous Multi-Cloud Mesh",
-      category: "Layer 1: Infrastructure Core",
-      icon: <Server size={20} />,
-      desc: "An intelligent distributed service mesh that dynamically balances multi-cloud traffic, isolates microservice failures, and auto-scales compute with zero manual intervention.",
+    presenza: {
+      id: "presenza",
+      name: "Presenza",
+      tagline: "1-Minute Attendance Application",
+      category: "Institutional & Campus Productivity",
+      icon: <Clock size={22} />,
+      desc: "Presenza is an intelligent, high-speed attendance application engineered to complete full classroom and college attendance in approximately 1 minute, eliminating roll-call delays and proxy errors.",
       features: [
-        "Dynamic self-healing cluster discovery across AWS, GCP, and bare metal",
-        "Sub-1ms telemetry collection with automated failover routing",
-        "Hardware-level TLS 1.3 mutual authentication out of the box",
-        "Zero-downtime canary rollout orchestration with instant rollbacks",
+        "Rapid 1-minute college and classroom attendance capture",
+        "Automated attendance verification with instant faculty dashboards",
+        "Real-time absent tracking and automated departmental reporting",
+        "Built for scalable deployment across colleges, universities, and schools",
       ],
-      terminalFile: "mesh-orchestrator.rs",
+      terminalFile: "presenza-session.log",
       logs: [
-        "INFO  [cloudmesh::core] Initializing cluster nodes across 3 regions...",
-        "SUCCESS [cloudmesh::tls] mTLS certificates negotiated across 142 microservices",
-        "STATUS [cloudmesh::health] P99 latency: 0.84ms | Packet drop: 0.000%",
-        "OPTIMIZE [cloudmesh::autoscale] Scaled 28 worker nodes dynamically to absorb spike",
+        "SESSION [presenza::init] Starting 60-second batch attendance...",
+        "RECORD  [presenza::capture] 68/70 students checked in verified",
+        "SYNC    [presenza::cloud] Instant institutional sync complete in 48s",
+        "REPORT  [presenza::export] Departmental absent log dispatched",
       ],
       stats: [
-        { label: "Failover Time", value: "< 120ms" },
-        { label: "SLA Guarantee", value: "99.999%" },
-        { label: "Cost Savings", value: "38.4%" },
+        { label: "Attendance Speed", value: "~1 Min" },
+        { label: "Accuracy", value: "100%" },
+        { label: "Deployment", value: "Rapid" },
       ],
+      url: null,
+      urlDisplay: null,
     },
-    flowengine: {
-      id: "flowengine",
-      name: "Reversun FlowEngine™",
-      tagline: "Ultra-Low Latency Event Stream",
-      category: "Layer 2: Real-time Event Fabric",
-      icon: <Workflow size={20} />,
-      desc: "Engineered for high-throughput enterprises that require millions of ordered events processed per second without queue bottlenecking or lock contention.",
+    quanbit: {
+      id: "quanbit",
+      name: "QuanBit",
+      tagline: "AI-Based Quantum Algorithm Learning Platform",
+      category: "Quantum Computing & AI Education",
+      icon: <Atom size={22} />,
+      desc: "QuanBit is an AI-powered interactive learning platform engineered to teach and simulate quantum computing algorithms. Learn quantum circuits, gates, and algorithmic execution in an intuitive web environment.",
       features: [
-        "Distributed log stream capable of 10M+ concurrent event writes",
-        "Deterministic event replay and transactional idempotency",
-        "Declarative filter rules with compile-time zero-copy deserialization",
-        "Native webhook dispatch with automatic exponential backoff",
+        "AI-guided interactive quantum algorithm learning pathways",
+        "Visual circuit simulation and quantum state vector analysis",
+        "Hands-on algorithm sandbox with step-by-step AI tutoring",
+        "Live web platform accessible worldwide at quanbit.tech",
       ],
-      terminalFile: "flow-stream.ts",
+      terminalFile: "quanbit-circuit.qasm",
       logs: [
-        "STREAM [flowengine::inbound] 4,820,100 events ingested/sec",
-        "PIPELINE [flowengine::transform] Idempotency checksum: 100% verified",
-        "ROUTER [flowengine::dispatch] 0 dropped packets across 12 downstream brokers",
-        "HEALTH [flowengine::buffer] In-memory buffer utilization: 18.2%",
+        "INIT    [quanbit::ai] Loading quantum algorithm tutor engine...",
+        "CIRCUIT [quanbit::gates] Applying Hadamard & CNOT entanglement gates",
+        "STATE   [quanbit::sim] |ψ⟩ = (|00⟩ + |11⟩)/√2 Bell state verified",
+        "ONLINE  [quanbit::web] Interactive simulation live at quanbit.tech",
       ],
       stats: [
-        { label: "Throughput", value: "10M+ ev/s" },
-        { label: "Processing Lag", value: "< 2ms" },
-        { label: "Data Integrity", value: "100.00%" },
+        { label: "Learning Engine", value: "AI-Guided" },
+        { label: "Simulation", value: "Interactive" },
+        { label: "Live Platform", value: "quanbit.tech" },
       ],
-    },
-    sentinel: {
-      id: "sentinel",
-      name: "Reversun Sentinel AI™",
-      tagline: "Predictive Operations & System Copilot",
-      category: "Layer 3: Autonomous Intelligence",
-      icon: <BrainCircuit size={20} />,
-      desc: "Autonomous AI agent system continuously analyzing runtime performance, identifying security anomalies, and predicting system bottlenecks hours before they impact customers.",
-      features: [
-        "Real-time predictive telemetry detecting microservice memory leaks",
-        "Autonomous root cause analysis (RCA) generated within 10 seconds",
-        "Continuous compliance scanning for SOC2, HIPAA, and GDPR",
-        "Natural language query copilot for entire company infrastructure",
-      ],
-      terminalFile: "sentinel-agent.py",
-      logs: [
-        "AGENT  [sentinel::audit] Scanning 1,400 pod configurations...",
-        "ANALYZE [sentinel::ml] Anomaly score normal (0.012). No risk detected",
-        "PREDICT [sentinel::capacity] Disk saturation averted: pre-allocated 400GB",
-        "COPILOT [sentinel::ready] Ready for natural language queries on #reversun-ops",
-      ],
-      stats: [
-        { label: "RCA Speed", value: "8.4 sec" },
-        { label: "Anomalies Prevented", value: "99.4%" },
-        { label: "Compliance Score", value: "100/100" },
-      ],
+      url: "https://quanbit.tech",
+      urlDisplay: "quanbit.tech",
     },
   };
 
-  const current = products[activeProduct];
+  const product = products[activeProduct];
 
   return (
-    <section id="product" className={styles.section}>
-      <div className="container">
-        {/* Section Header */}
-        <div className={styles.sectionHeader}>
-          <div className={styles.preTitle}>
-            <Sparkles size={16} />
-            <span>Proprietary Technology Suite</span>
+    <div className={styles.productSectionRight}>
+      {/* 2 Product Tabs at the top */}
+      <div className={styles.productTabsRow}>
+        <button
+          onClick={() => setActiveProduct("presenza")}
+          className={`${styles.tabBtn} ${
+            activeProduct === "presenza" ? styles.activeTabBtn : ""
+          }`}
+        >
+          <div className={styles.tabBtnIcon}>
+            <Clock size={20} />
           </div>
-          <h2 className={styles.title}>
-            Engineered Products for the Next Era.
-          </h2>
-          <p className={styles.desc}>
-            Built by engineers who have scaled global architectures. Explore the core platforms
-            powering Reversun’s enterprise client deployments.
-          </p>
-        </div>
+          <div className={styles.tabBtnText}>
+            <span className={styles.tabBtnName}>Presenza</span>
+            <span className={styles.tabBtnSub}>1-Min Attendance App</span>
+          </div>
+        </button>
 
-        {/* Product Switcher Tabs */}
-        <div className={styles.productTabs}>
-          {Object.values(products).map((p) => (
-            <button
-              key={p.id}
-              onClick={() => setActiveProduct(p.id)}
-              className={`${styles.tabBtn} ${
-                activeProduct === p.id ? styles.activeTabBtn : ""
-              }`}
-            >
-              {p.icon}
-              <span>{p.name}</span>
-            </button>
-          ))}
-        </div>
+        <button
+          onClick={() => setActiveProduct("quanbit")}
+          className={`${styles.tabBtn} ${
+            activeProduct === "quanbit" ? styles.activeTabBtn : ""
+          }`}
+        >
+          <div className={styles.tabBtnIcon}>
+            <Atom size={20} />
+          </div>
+          <div className={styles.tabBtnText}>
+            <span className={styles.tabBtnName}>QuanBit</span>
+            <span className={styles.tabBtnSub}>AI-based quantum algorithm learning platform</span>
+          </div>
+        </button>
+      </div>
 
-        {/* Product Showcase Card */}
-        <div className={styles.productShowcase}>
-          {/* Left Details */}
-          <div className={styles.productDetails}>
-            <div>
-              <div className={styles.productTag}>
-                <Layers size={14} />
-                <span>{current.category}</span>
+      {/* Product Showcase Card */}
+      <div className={styles.productCard}>
+        <div className={styles.cardInfoCol}>
+          <div className={styles.categoryPill}>
+            {product.icon}
+            <span>{product.category}</span>
+          </div>
+
+          <h2 className={styles.productName}>{product.name}</h2>
+          <div className={styles.tagline}>{product.tagline}</div>
+
+          <p className={styles.productDesc}>{product.desc}</p>
+
+          <div className={styles.featuresList}>
+            {product.features.map((feature, idx) => (
+              <div key={idx} className={styles.featureItem}>
+                <div className={styles.featureCheck}>
+                  <Check size={14} />
+                </div>
+                <span>{feature}</span>
               </div>
-              <h3 className={styles.productTitle}>{current.name}</h3>
-              <p className={styles.productOverview}>{current.desc}</p>
+            ))}
+          </div>
 
-              <ul className={styles.featureList}>
-                {current.features.map((feat, idx) => (
-                  <li key={idx} className={styles.featureItem}>
-                    <Check size={18} className={styles.featureIcon} />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className={styles.statsRow}>
+            {product.stats.map((stat, idx) => (
+              <div key={idx} className={styles.statBox}>
+                <div className={styles.statVal}>{stat.value}</div>
+                <div className={styles.statLbl}>{stat.label}</div>
+              </div>
+            ))}
+          </div>
 
-            <div className={styles.productActionRow}>
+          <div className={styles.actionRow}>
+            {product.url ? (
+              <>
+                <a
+                  href={product.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.demoPrimaryBtn}
+                >
+                  <span>Visit {product.urlDisplay}</span>
+                  <ExternalLink size={16} />
+                </a>
+                <button
+                  className={styles.demoSecondaryBtn}
+                  onClick={() => handleInquiry(product.name)}
+                >
+                  <span>Inquire About {product.name}</span>
+                  <ArrowRight size={15} />
+                </button>
+              </>
+            ) : (
               <button
-                className={styles.primaryAction}
-                onClick={() => handleDemoAction(current.name)}
+                className={styles.demoPrimaryBtn}
+                onClick={() => handleInquiry(product.name)}
               >
-                <span>Request Sandbox Access</span>
+                <span>Inquire About {product.name}</span>
                 <ArrowRight size={16} />
               </button>
-              <button
-                className={styles.secondaryAction}
-                onClick={() => handleDemoAction(`Docs & Whitepaper: ${current.name}`)}
-              >
-                <span>Read Whitepaper</span>
-              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Interactive Simulated Architecture / Terminal Box */}
+        <div className={styles.terminalCol}>
+          <div className={styles.terminalHeader}>
+            <div className={styles.terminalDots}>
+              <span className={styles.dotRed} />
+              <span className={styles.dotYellow} />
+              <span className={styles.dotGreen} />
+            </div>
+            <div className={styles.terminalFilename}>
+              <Terminal size={14} />
+              <span>{product.terminalFile}</span>
+            </div>
+            <div className={styles.terminalStatus}>
+              <Activity size={13} color="#00A854" />
+              <span>Live</span>
             </div>
           </div>
 
-          {/* Right Visual / Live Terminal */}
-          <div className={styles.productVisualPane}>
-            <div className={styles.terminalWindow}>
-              <div className={styles.terminalTop}>
-                <div className={styles.terminalDots}>
-                  <span className={`${styles.dot} ${styles.dotRed}`} />
-                  <span className={`${styles.dot} ${styles.dotYellow}`} />
-                  <span className={`${styles.dot} ${styles.dotGreen}`} />
-                </div>
-                <span className={styles.terminalTitle}>
-                  <Terminal size={12} style={{ display: "inline", marginRight: 6 }} />
-                  {current.terminalFile}
-                </span>
-                <span style={{ fontSize: 11, color: "#34D399", fontWeight: 700 }}>LIVE</span>
-              </div>
-
-              <div className={styles.terminalBody}>
-                <div style={{ color: "#64748B", marginBottom: 12 }}>
-                  // Reversun Runtime v4.2.0 • Active Mesh Telemetry
-                </div>
-                {current.logs.map((line, i) => (
-                  <div key={i} style={{ marginBottom: 8 }}>
-                    <span className={styles.codeOrange}>$</span>{" "}
-                    <span
-                      className={
-                        line.includes("SUCCESS") || line.includes("100%")
-                          ? styles.codeGreen
-                          : line.includes("INFO")
-                          ? styles.codeBlue
-                          : ""
-                      }
-                    >
-                      {line}
-                    </span>
-                  </div>
-                ))}
-              </div>
+          <div className={styles.terminalBody}>
+            <div className={styles.terminalWelcome}>
+              // Reversun Product Telemetry v2.4
+              <br />
+              // Status: Operational & Verified
             </div>
 
-            {/* Live Metrics */}
-            <div className={styles.simulationBox}>
-              {current.stats.map((s, idx) => (
-                <div key={idx}>
-                  <div className={styles.simStatValue}>{s.value}</div>
-                  <div className={styles.simStatLabel}>{s.label}</div>
-                </div>
-              ))}
+            {product.logs.map((log, idx) => (
+              <div key={idx} className={styles.terminalLogLine}>
+                <span className={styles.logPrompt}>&gt;</span>
+                <span className={styles.logContent}>{log}</span>
+              </div>
+            ))}
+
+            <div className={styles.terminalCursorLine}>
+              <span className={styles.logPrompt}>&gt;</span>
+              <span className={styles.cursorBlink}>_</span>
+            </div>
+          </div>
+
+          <div className={styles.terminalFooter}>
+            <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "12px", color: "#A3B5CC" }}>
+              <Layers size={13} />
+              <span>First-Principles Engineered</span>
+            </div>
+            <div style={{ fontSize: "12px", color: "#FC6235", fontWeight: 700 }}>
+              {product.name} by Reversun
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -81,84 +81,89 @@
   box-shadow: 0 4px 18px rgba(27, 51, 96, 0.3);
 }
 
+.servicesSectionRight {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 /* Services Grid */
 .servicesGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-bottom: 70px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .serviceCard {
   background: #FAFBFD;
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 32px;
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
 }
 
 .serviceCard:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   background: #FFFFFF;
   border-color: rgba(252, 98, 53, 0.4);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .cardTop {
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .iconWrap {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
   background: var(--orange-light);
   color: var(--primary-orange);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
+  margin-bottom: 14px;
+  transition: all 0.25s ease;
 }
 
 .serviceCard:hover .iconWrap {
   background: var(--primary-orange);
   color: #FFFFFF;
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.08) rotate(4deg);
   box-shadow: var(--shadow-orange);
 }
 
 .cardTitle {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--primary-navy);
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  letter-spacing: -0.4px;
 }
 
 .cardSummary {
-  font-size: 15px;
+  font-size: 13.5px;
   color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-bottom: 14px;
 }
 
 .tagsRow {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 6px;
+  margin-bottom: 4px;
 }
 
 .techTag {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: var(--radius-xs);
   background: #EFF3F8;
   color: var(--primary-navy);
@@ -167,7 +172,7 @@
 
 .cardBottom {
   border-top: 1px solid var(--border-light);
-  padding-top: 18px;
+  padding-top: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -197,153 +202,96 @@
   transform: translateX(3px);
 }
 
-/* Interactive Scope & Estimator Widget */
-.estimatorBox {
+/* Clean Call To Action Box */
+.ctaBox {
   background: linear-gradient(135deg, #101E35 0%, #17376F 100%);
   border-radius: var(--radius-xl);
   padding: 48px;
   color: #FFFFFF;
   box-shadow: var(--shadow-lg);
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
   align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.estimatorLeftTitle {
-  font-size: 32px;
+.ctaBoxTitle {
+  font-size: 30px;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
   margin-bottom: 12px;
-  letter-spacing: -1px;
+  letter-spacing: -0.5px;
 }
 
-.estimatorLeftDesc {
+.ctaBoxDesc {
   font-size: 15px;
   color: #CAD5E2;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   line-height: 1.6;
 }
 
-.selectorGroup {
-  margin-bottom: 20px;
-}
-
-.selectorLabel {
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 10px;
-  display: block;
-}
-
-.optionsRow {
+.ctaHighlights {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
 }
 
-.optionChip {
-  font-size: 13px;
+.ctaHighlightItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #E2E8F0;
   font-weight: 600;
-  padding: 8px 16px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.1);
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-.optionChip:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.activeOptionChip {
-  background: var(--primary-orange);
-  border-color: var(--primary-orange);
-  box-shadow: 0 4px 15px rgba(252, 98, 53, 0.4);
-}
-
-.estimatorCardRight {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-lg);
-  padding: 32px;
+.ctaActionWrap {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  justify-content: flex-end;
 }
 
-.estimatePriceTag {
-  font-size: 40px;
-  font-weight: 800;
-  color: #FFFFFF;
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.estimatePriceTag span {
-  font-size: 14px;
-  color: #A3B5CC;
-  font-weight: 500;
-}
-
-.teamSpecRow {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 16px 0;
-}
-
-.teamSpecItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
-  color: #D3DFEE;
-}
-
-.estimateActionBtn {
+.ctaContactBtn {
   background: var(--primary-orange);
   color: #FFFFFF;
   font-weight: 700;
-  font-size: 15px;
-  padding: 14px 24px;
+  font-size: 16px;
+  padding: 16px 32px;
   border-radius: var(--radius-full);
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
   box-shadow: var(--shadow-orange);
   transition: all 0.25s ease;
+  text-decoration: none;
 }
 
-.estimateActionBtn:hover {
+.ctaContactBtn:hover {
   background: #FF5D37;
   transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(252, 98, 53, 0.45);
 }
 
 @media (max-width: 1024px) {
   .servicesGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .estimatorBox {
+  .ctaBox {
     grid-template-columns: 1fr;
     gap: 32px;
     padding: 32px;
+  }
+  .ctaActionWrap {
+    justify-content: flex-start;
   }
 }
 
 @media (max-width: 640px) {
   .servicesGrid {
     grid-template-columns: 1fr;
+  }
+  .ctaContactBtn {
+    width: 100%;
+    justify-content: center;
   }
 }

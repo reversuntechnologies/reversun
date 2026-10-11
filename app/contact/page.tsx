@@ -1,35 +1,25 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
-import PageHeader from "@/components/PageHeader";
-import ContactSection from "@/components/ContactSection";
+import ContactView from "@/components/ContactView";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Reversun Technologies",
+  title: "Contact Us | Reversun - Inquire for Services & Products",
   description:
-    "Submit your technical brief or schedule a 15-minute architecture discovery call with Reversun's Principal Solutions Architects.",
+    "Get in touch with Reversun. Inquire about Presenza, QuanBit, Web & App Development, AI & Automation, Cloud Management, or System Design via info@reversun.com.",
+  keywords: [
+    "Contact Reversun",
+    "info@reversun.com",
+    "Software Engineering Inquiry",
+    "Presenza Inquiry",
+    "QuanBit Inquiry",
+    "Hire Reverse Engineering Team",
+  ],
 };
 
 export default function ContactPage() {
-  const pills = [
-    { dot: "#FC6235", label: "2-HR SLA", sub: "Guaranteed Response" },
-    { dot: "#00A854", label: "DISCOVERY CALL", sub: "15-Min Architecture Sync" },
-    { dot: "#3B82F6", label: "STACK AUDIT", sub: "Feasibility Review" },
-    { dot: "#8B5CF6", label: "FULL IP RIGHTS", sub: "100% Client Owned" },
-    { dot: "#F59E0B", label: "SPRINT ZERO", sub: "Rapid Deployment" },
-  ];
-
   return (
-    <div>
-      <PageHeader
-        pageName="Contact Us"
-        titleLine1="THE BRIEF,"
-        titleLine2="IN ITS"
-        titleLine3="OWN"
-        previewText="2-HOUR SLA"
-        titleLine4="SPEED"
-        subtitle="Speak directly with our technical partners and lead solutions architects. Send your requirements and receive technical feasibility analysis within hours."
-        pills={pills}
-      />
-      <ContactSection />
-    </div>
+    <Suspense fallback={<div style={{ minHeight: "600px" }} />}>
+      <ContactView />
+    </Suspense>
   );
 }

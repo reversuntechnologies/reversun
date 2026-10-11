@@ -1,0 +1,50 @@
+.splitPageWrapper {
+  padding: 24px 0 60px 0;
+  background: var(--bg-page);
+  min-height: calc(100vh - 160px);
+  position: relative;
+}
+
+.splitGrid {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.leftCol {
+  position: sticky;
+  top: 96px;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0; /* Prevents overflow in grid child */
+}
+
+@media (max-width: 1280px) {
+  .splitGrid {
+    grid-template-columns: 28% 72%;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .splitPageWrapper {
+    padding: 24px 0 60px 0;
+  }
+  .splitGrid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .leftCol {
+    position: relative;
+    top: 0;
+  }
+}

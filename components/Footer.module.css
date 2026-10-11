@@ -39,9 +39,15 @@
 }
 
 .brandLogo {
-  height: 42px;
+  height: 40px;
   width: auto;
+  max-width: 200px;
   object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.brandLink:hover .brandLogo {
+  transform: scale(1.03);
 }
 
 .brandName {
@@ -61,20 +67,41 @@
   max-width: 320px;
 }
 
-.certBadgesRow {
+.directContactWrap {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
 }
 
-.certBadge {
-  font-size: 11px;
+.directContactLink {
+  color: #FFFFFF;
+  font-size: 13px;
   font-weight: 700;
-  padding: 4px 10px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-xs);
-  color: #CBD5E1;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.directContactLink:hover {
+  color: var(--primary-orange);
+}
+
+.footerInquiryLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-orange) !important;
+  font-weight: 700;
+  font-size: 13px;
+  transition: transform 0.2s ease;
+}
+
+.footerInquiryLink:hover {
+  transform: translateX(4px);
 }
 
 .colTitle {

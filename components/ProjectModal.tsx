@@ -46,11 +46,11 @@ export default function ProjectModal({ isOpen, onClose, defaultTopic = "" }: Pro
               <CheckCircle2 size={32} />
             </div>
             <h3 style={{ fontSize: 22, fontWeight: 800, color: "#1B3360" }}>
-              Consultation Scheduled!
+              Inquiry Dispatched!
             </h3>
             <p style={{ fontSize: 14, color: "#5C6E87", lineHeight: 1.6 }}>
-              Thank you, <strong>{name}</strong>. Our Lead Solutions Architect will email you at{" "}
-              <strong>{email}</strong> within 2 hours to confirm our kickoff discussion.
+              Thank you, <strong>{name}</strong>. Your inquiry for <strong>{topic}</strong> has been routed to{" "}
+              <strong>info@reversun.com</strong>. We will reply to <strong>{email}</strong> shortly.
             </p>
             <button
               onClick={handleReset}
@@ -68,8 +68,7 @@ export default function ProjectModal({ isOpen, onClose, defaultTopic = "" }: Pro
             </div>
             <h3 className={styles.title}>Let&apos;s Build With Reversun</h3>
             <p className={styles.subtitle}>
-              Connect with our principal architects. We review your tech requirements and schedule
-              a 15-min discovery call.
+              Connect with our team. We review your requirements and respond directly via info@reversun.com.
             </p>
 
             <form onSubmit={handleSubmit} className={styles.form}>
@@ -78,7 +77,7 @@ export default function ProjectModal({ isOpen, onClose, defaultTopic = "" }: Pro
                 <input
                   type="text"
                   required
-                  placeholder="Alex Morgan"
+                  placeholder="Your Name"
                   className={styles.input}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -86,11 +85,11 @@ export default function ProjectModal({ isOpen, onClose, defaultTopic = "" }: Pro
               </div>
 
               <div className={styles.field}>
-                <label className={styles.label}>Work Email *</label>
+                <label className={styles.label}>Email *</label>
                 <input
                   type="email"
                   required
-                  placeholder="alex@company.com"
+                  placeholder="name@example.com"
                   className={styles.input}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -98,10 +97,10 @@ export default function ProjectModal({ isOpen, onClose, defaultTopic = "" }: Pro
               </div>
 
               <div className={styles.field}>
-                <label className={styles.label}>Topic / Objective</label>
+                <label className={styles.label}>Topic / Product / Service</label>
                 <input
                   type="text"
-                  placeholder="Cloud Migration, AI Integration, New App..."
+                  placeholder="Presenza, QuanBit, AI & Automation, Web & App..."
                   className={styles.input}
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
