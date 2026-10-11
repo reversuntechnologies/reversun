@@ -39,10 +39,10 @@ export default function Navbar({ onOpenSearch, onOpenContact }: NavbarProps) {
           {/* Brand Logo */}
           <Link href="/" className={styles.logoArea} onClick={() => setMobileOpen(false)} aria-label="Reversun Home">
             <Image
-              src="/REVERSUN LOGO.svg"
+              src="/REVERSUN LOGO.png"
               alt="Reversun"
-              width={210}
-              height={50}
+              width={434}
+              height={119}
               style={{ width: "auto", height: "48px" }}
               className={styles.logoImg}
               priority

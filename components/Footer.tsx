@@ -19,10 +19,10 @@ export default function Footer({ onOpenContact }: FooterProps = {}) {
           <div className={styles.brandCol}>
             <Link href="/" className={styles.brandLink} aria-label="Reversun">
               <Image
-                src="/REVERSUN LOGO.svg"
+                src="/REVERSUN LOGO.png"
                 alt="Reversun"
-                width={210}
-                height={50}
+                width={434}
+                height={119}
                 style={{ width: "auto", height: "48px" }}
                 className={styles.brandLogo}
               />

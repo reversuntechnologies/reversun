@@ -1,8 +1,14 @@
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import SiteLayout from "@/components/SiteLayout";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -70,7 +76,7 @@ export const metadata: Metadata = {
     siteName: "Reversun",
     images: [
       {
-        url: "/REVERSUN LOGO.svg",
+        url: "/REVERSUN LOGO.png",
         width: 1200,
         height: 630,
         alt: "Reversun Software Engineering",
@@ -84,7 +90,7 @@ export const metadata: Metadata = {
     title: "Reversun | Reverse Engineering Software, AI, Cloud & Products",
     description:
       "Reversun builds modern Web & App solutions, AI automations, cloud management architectures, and breakthrough products like Presenza and QuanBit.",
-    images: ["/REVERSUN LOGO.svg"],
+    images: ["/REVERSUN LOGO.png"],
   },
   robots: {
     index: true,
@@ -112,7 +118,7 @@ export default function RootLayout({
         "@id": "https://www.reversun.com/#organization",
         "name": "Reversun",
         "url": "https://www.reversun.com",
-        "logo": "https://www.reversun.com/REVERSUN%20LOGO.svg",
+        "logo": "https://www.reversun.com/REVERSUN%20LOGO.png",
         "email": "info@reversun.com",
         "foundingLocation": {
           "@type": "Country",
