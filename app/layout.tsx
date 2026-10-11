@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.reversun.com"),
   title: {
-    default: "Reversun | Reverse Engineering Software, AI, Cloud & Products",
+    default: "Reversun | Enterprise Software Engineering, AI, Cloud & Products",
     template: "%s | Reversun",
   },
   description:
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   keywords: [
     "Reversun",
-    "Reverse Engineering Software",
+    "Enterprise Software Solutions",
     "Software Engineering Company",
     "Web and App Development",
     "Full-Stack Web Development",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     apple: "/REVERSUN ICON.svg",
   },
   openGraph: {
-    title: "Reversun | Reverse Engineering Software, AI, Cloud & Products",
+    title: "Reversun | Enterprise Software Engineering, AI, Cloud & Products",
     description:
       "Reversun builds modern Web & App solutions, AI automations, cloud management architectures, and breakthrough products like Presenza and QuanBit.",
     url: "https://www.reversun.com",
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reversun | Reverse Engineering Software, AI, Cloud & Products",
+    title: "Reversun | Enterprise Software Engineering, AI, Cloud & Products",
     description:
       "Reversun builds modern Web & App solutions, AI automations, cloud management architectures, and breakthrough products like Presenza and QuanBit.",
     images: ["/REVERSUN LOGO.png"],

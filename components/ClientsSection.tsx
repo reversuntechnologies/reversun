@@ -9,7 +9,7 @@ export default function ClientsSection() {
     {
       id: "velocity",
       icon: <Zap size={22} />,
-      title: "Reverse-Engineered Velocity",
+      title: "First-Principles Velocity",
       desc: "We analyze systems down to first principles to engineer clean, maintainable, and high-velocity software solutions.",
       tag: "First Principles",
     },

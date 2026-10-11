@@ -28,7 +28,7 @@ export default function Footer({ onOpenContact }: FooterProps = {}) {
               />
             </Link>
             <p className={styles.brandDesc}>
-              Reversun is a software engineering company built on the principles of reverse engineering. We craft high-impact Web & App Development, AI & Automation, Cloud Management, and System Design solutions.
+              Reversun is an enterprise software engineering company. We craft high-impact Web & App Development, AI & Automation, Cloud Management, and System Design solutions.
             </p>
             <div className={styles.directContactWrap}>
               <Mail size={16} color="#FC6235" />

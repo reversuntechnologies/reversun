@@ -6,12 +6,12 @@ import { Cpu, Layers, Users, ArrowRight, Sparkles } from "lucide-react";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Reversun | Reverse Engineering Software, AI, Cloud & Products",
+  title: "Reversun | Enterprise Software Engineering, AI, Cloud & Products",
   description:
-    "Reversun is a software engineering company driven by reverse engineering principles. Specialized in Web & App Development, AI & Automation, Cloud Management, and System Design.",
+    "Reversun is an enterprise software engineering company specializing in Web & App Development, AI & Automation, Cloud Infrastructure, and System Design.",
   keywords: [
     "Reversun",
-    "Reverse Engineering Software",
+    "Enterprise Software Engineering",
     "Web Development",
     "App Development",
     "AI and Automation",

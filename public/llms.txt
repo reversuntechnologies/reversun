@@ -2,7 +2,7 @@
 # https://www.reversun.com/llms.txt
 
 # Company Overview
-Reversun is a software engineering company built on reverse engineering principles, first-principles systems architecture, and high-velocity engineering based in India.
+Reversun is an enterprise software engineering company built on first-principles systems architecture and high-velocity engineering based in India.
 Website: https://www.reversun.com
 Inquiries: info@reversun.com
 
