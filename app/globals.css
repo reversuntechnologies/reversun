@@ -221,6 +221,12 @@ input, textarea, select {
   }
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding: 0 14px;
+  }
+}
+
 /* Page Shifting Smooth Transitions */
 @keyframes pageShiftIn {
   0% {

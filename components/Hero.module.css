@@ -454,3 +454,137 @@
   font-size: 11.5px;
   letter-spacing: 0.5px;
 }
+
+/* Mobile & Tablet Fine-tuning */
+@media (max-width: 768px) {
+  .heroSection {
+    padding-top: 18px;
+    padding-bottom: 16px;
+  }
+
+  .heroTopFlex {
+    gap: 16px;
+    padding-bottom: 20px;
+  }
+
+  .mainTitle {
+    font-size: clamp(23px, 6.2vw, 32px);
+    line-height: 1.15;
+    letter-spacing: -0.6px;
+  }
+
+  .subtextCol {
+    gap: 14px;
+  }
+
+  .heroDesc {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  .heroCtaRow {
+    gap: 10px;
+  }
+
+  .primaryCtaBtn,
+  .secondaryCtaBtn {
+    padding: 9px 18px;
+    font-size: 11.5px;
+  }
+
+  .visualCardsGrid {
+    gap: 14px;
+  }
+
+  .whatWeDoCard {
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  .cardTopBar {
+    padding-bottom: 10px;
+  }
+
+  .cardContent {
+    padding: 14px 0;
+    gap: 10px;
+  }
+
+  .cardMainHeading {
+    font-size: 18px;
+    letter-spacing: -0.3px;
+  }
+
+  .cardParagraph {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .techPillOrange,
+  .techPillGray {
+    font-size: 10.5px;
+    padding: 4px 10px;
+  }
+
+  .cardBottomBar {
+    padding-top: 10px;
+    font-size: 11px;
+  }
+
+  .teamShowcaseCard {
+    min-height: 200px;
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  .teamTitle {
+    font-size: 15px;
+  }
+
+  .teamDesc {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .trustClientStrip {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .trustLeft {
+    font-size: 11.5px;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .trustRight {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .deployPill {
+    font-size: 10.5px;
+    padding: 4px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 24px;
+  }
+
+  .heroCtaRow {
+    width: 100%;
+  }
+
+  .primaryCtaBtn,
+  .secondaryCtaBtn {
+    flex: 1;
+    text-align: center;
+  }
+}

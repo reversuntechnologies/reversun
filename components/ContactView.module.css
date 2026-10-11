@@ -766,3 +766,144 @@
   margin-top: auto;
   padding-top: 8px;
 }
+
+/* Mobile & Tablet Responsive Adjustments */
+@media (max-width: 1024px) {
+  .contactPageWrapper {
+    padding: 16px 0 36px 0;
+  }
+  .mainGrid {
+    gap: 24px;
+  }
+  .headline {
+    font-size: 26px;
+    line-height: 1.15;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactPageWrapper {
+    padding: 12px 0 32px 0;
+  }
+  .mainGrid {
+    gap: 18px;
+  }
+  .leftCol {
+    gap: 14px;
+  }
+  .headline {
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.4px;
+  }
+  .heroDesc {
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .inboxCard {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+  .inboxEmailLink {
+    font-size: 13.5px;
+  }
+  .responseMetricCard {
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
+  .metricBigVal {
+    font-size: 14.5px;
+  }
+  .signalBadgesGrid {
+    gap: 8px;
+  }
+  .signalBadge {
+    padding: 6px 10px;
+    border-radius: 10px;
+  }
+  .signalText {
+    font-size: 9.5px;
+  }
+  .formCard {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+  .formTitle {
+    font-size: 18px;
+  }
+  .formSubtitle {
+    font-size: 12px;
+  }
+  .inputLabel {
+    font-size: 12.5px;
+  }
+  .typeSelectorRow {
+    padding: 3px;
+    gap: 4px;
+  }
+  .typeBtn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  .pillsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  .pillBtn {
+    padding: 7px 10px;
+    border-radius: 8px;
+  }
+  .pillName {
+    font-size: 11px;
+  }
+  .pillSub {
+    display: none;
+  }
+  .twoInputsRow {
+    gap: 10px;
+  }
+  .fieldLabel {
+    font-size: 10px;
+  }
+  .textField,
+  .textAreaField {
+    padding: 8px 10px;
+    font-size: 12.5px;
+    border-radius: 8px;
+  }
+  .submitBtn {
+    padding: 11px 18px;
+    font-size: 12.5px;
+  }
+  .guaranteeNote {
+    font-size: 10px;
+  }
+  .bottomHighlightGrid {
+    margin-top: 24px;
+    padding-top: 16px;
+    gap: 10px;
+    grid-template-columns: 1fr;
+  }
+  .bottomCard {
+    padding: 14px 16px;
+    border-radius: 14px;
+    gap: 8px;
+  }
+  .bottomCardTitle {
+    font-size: 14px;
+  }
+  .bottomCardDesc {
+    font-size: 11.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pillsGrid {
+    grid-template-columns: 1fr;
+  }
+  .pillSub {
+    display: block;
+    font-size: 10px;
+  }
+}
+

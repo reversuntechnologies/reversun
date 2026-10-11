@@ -239,15 +239,126 @@
 }
 
 @media (max-width: 960px) {
+  .exploreSection {
+    padding: 48px 0;
+  }
+  .exploreHeader {
+    margin: 0 auto 32px auto;
+  }
+  .title {
+    font-size: 26px;
+  }
+  .desc {
+    font-size: 14.5px;
+  }
   .cardsGrid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .navCard {
+    padding: 24px;
+    border-radius: 18px;
+  }
+  .cardIconWrap {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+  .cardTitle {
+    font-size: 20px;
+  }
+  .cardSummary {
+    font-size: 14px;
+    margin-bottom: 18px;
   }
   .ctaBanner {
     flex-direction: column;
     text-align: center;
-    padding: 40px 24px;
+    padding: 36px 24px;
+    margin-top: 48px;
+    border-radius: 20px;
+    gap: 24px;
+  }
+  .ctaPillTag {
+    margin: 0 auto;
+  }
+  .ctaLeftTitle {
+    font-size: 24px;
+  }
+  .ctaLeftDesc {
+    font-size: 14px;
+    margin: 0 auto;
   }
   .ctaBtnGroup {
     justify-content: center;
+    width: 100%;
+  }
+  .ctaBtnPrimary,
+  .ctaBtnSecondary {
+    padding: 12px 22px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .exploreSection {
+    padding: 36px 0;
+  }
+  .exploreHeader {
+    margin: 0 auto 24px auto;
+  }
+  .title {
+    font-size: 22px;
+    line-height: 1.25;
+  }
+  .desc {
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .navCard {
+    padding: 18px;
+    border-radius: 14px;
+  }
+  .cardIconWrap {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+  }
+  .cardTitle {
+    font-size: 17px;
+    margin-bottom: 6px;
+  }
+  .cardSummary {
+    font-size: 13px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+  .cardAction {
+    font-size: 13px;
+  }
+  .ctaBanner {
+    padding: 24px 16px;
+    margin-top: 36px;
+    border-radius: 16px;
+    gap: 20px;
+  }
+  .ctaLeftTitle {
+    font-size: 20px;
+    line-height: 1.25;
+  }
+  .ctaLeftDesc {
+    font-size: 13px;
+  }
+  .ctaBtnGroup {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ctaBtnPrimary,
+  .ctaBtnSecondary {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 18px;
+    font-size: 13px;
   }
 }

@@ -302,6 +302,13 @@
 }
 
 @media (max-width: 900px) {
+  .navContainer {
+    height: 60px;
+  }
+  .logoImg {
+    height: 36px;
+    max-width: 170px;
+  }
   .navLinks {
     display: none;
   }
@@ -310,8 +317,41 @@
   }
   .mobileMenuBtn {
     display: block;
+    padding: 6px;
+  }
+  .mobileDrawer {
+    top: 60px;
+    padding: 20px 16px;
+    gap: 16px;
+  }
+  .mobileNavLink {
+    font-size: 16px;
+    padding: 10px 0;
   }
   .floatingMobileContact {
     display: inline-flex;
+    bottom: 20px;
+    right: 16px;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navContainer {
+    height: 56px;
+  }
+  .logoImg {
+    height: 32px;
+    max-width: 155px;
+  }
+  .mobileDrawer {
+    top: 56px;
+  }
+  .floatingMobileContact {
+    bottom: 16px;
+    right: 14px;
+    padding: 9px 15px;
+    font-size: 12.5px;
   }
 }
