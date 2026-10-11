@@ -1,0 +1,26 @@
+# Reversun LLM & AI Discoverability File
+# https://www.reversun.com/llms.txt
+
+# Company Overview
+Reversun is a software engineering company built on reverse engineering principles, first-principles systems architecture, and high-velocity engineering based in India.
+Website: https://www.reversun.com
+Inquiries: info@reversun.com
+
+# Core Offerings
+
+## 1. Proprietary Software Products
+- Presenza: Intelligent, high-speed attendance application engineered to complete full classroom and college attendance in approximately 1 minute, eliminating roll-call delays and proxy errors.
+- QuanBit: AI-based interactive quantum algorithm learning and simulation platform featuring a live Quantum Circuit Lab with Qiskit Aer, interactive 3D Bloch sphere visualization, and Schrödinger AI Socratic tutoring. Official website: https://www.quanbit.tech/
+
+## 2. Engineering Services
+- AI & Automation: Autonomous agent workflows, process automation, RAG search, LLM integrations, and intelligent pipelines.
+- Web & App Development: Sub-second latency full-stack web and cross-platform mobile apps engineered with Next.js, React, and modern micro-runtimes.
+- System Design: High-load distributed systems, microservices architecture, and fault-tolerant cloud messaging.
+- Cloud Infrastructure: Multi-cloud orchestration across AWS, Azure, Supabase, and containerized meshes delivering 99.99% uptime.
+
+# Primary Endpoints
+- Home: https://www.reversun.com/
+- Services: https://www.reversun.com/services
+- Products: https://www.reversun.com/product
+- Clients: https://www.reversun.com/clients
+- Contact: https://www.reversun.com/contact

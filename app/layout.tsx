@@ -19,36 +19,38 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://reversun.com"),
+  metadataBase: new URL("https://www.reversun.com"),
   title: {
     default: "Reversun | Reverse Engineering Software, AI, Cloud & Products",
     template: "%s | Reversun",
   },
   description:
-    "Reversun is a premier software engineering company built on reverse engineering principles. Specialized in Web & App Development, AI & Automation, Cloud Management, System Design, Presenza, and QuanBit.",
+    "Reversun is an engineering company building high-impact proprietary software products (Presenza, QuanBit) and delivering Web & App Development, AI & Automation, Cloud Infrastructure, and System Design.",
+  alternates: {
+    canonical: "https://www.reversun.com",
+  },
   keywords: [
     "Reversun",
     "Reverse Engineering Software",
     "Software Engineering Company",
     "Web and App Development",
-    "Web Development",
+    "Full-Stack Web Development",
     "Mobile App Development",
     "AI and Automation",
-    "Artificial Intelligence Solutions",
-    "Cloud Management",
+    "Autonomous Agent Workflows",
     "Cloud Infrastructure",
-    "DevOps and Cloud",
+    "Cloud Management",
     "System Design",
-    "High-Scale Architecture",
+    "High-Scale Distributed Systems",
     "Presenza",
-    "Presenza Attendance App",
-    "College Attendance Software",
+    "1-Minute Smart Attendance App",
+    "College Attendance System",
     "QuanBit",
     "Quantum Algorithm Learning Platform",
     "quanbit.tech",
-    "Custom Software Engineering",
+    "Software Company India",
   ],
-  authors: [{ name: "Reversun", url: "https://reversun.com" }],
+  authors: [{ name: "Reversun", url: "https://www.reversun.com" }],
   creator: "Reversun",
   publisher: "Reversun",
   formatDetection: {
@@ -64,7 +66,7 @@ export const metadata: Metadata = {
     title: "Reversun | Reverse Engineering Software, AI, Cloud & Products",
     description:
       "Reversun builds modern Web & App solutions, AI automations, cloud management architectures, and breakthrough products like Presenza and QuanBit.",
-    url: "https://reversun.com",
+    url: "https://www.reversun.com",
     siteName: "Reversun",
     images: [
       {
@@ -107,20 +109,28 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://reversun.com/#organization",
+        "@id": "https://www.reversun.com/#organization",
         "name": "Reversun",
-        "url": "https://reversun.com",
-        "logo": "https://reversun.com/REVERSUN%20LOGO.svg",
+        "url": "https://www.reversun.com",
+        "logo": "https://www.reversun.com/REVERSUN%20LOGO.svg",
         "email": "info@reversun.com",
+        "foundingLocation": {
+          "@type": "Country",
+          "name": "India",
+        },
         "description":
-          "Reversun is a software engineering company built on the principles of reverse engineering, delivering Web & App Development, AI & Automation, Cloud Management, and System Design.",
+          "Reversun is a technology and software engineering company that builds proprietary products (Presenza, QuanBit) and delivers full-stack Web & Mobile Development, AI & Automation, Cloud Management, and System Design services.",
+        "sameAs": [
+          "https://github.com/reversuntechnologies",
+          "https://www.quanbit.tech"
+        ],
         "makesOffer": [
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
               "name": "AI & Automation",
-              "description": "Custom intelligent workflows, autonomous LLM agent pipelines, and process automation.",
+              "description": "Custom intelligent workflows, autonomous LLM agent pipelines, process automation, and RAG architectures.",
             },
           },
           {
@@ -128,15 +138,15 @@ export default function RootLayout({
             "itemOffered": {
               "@type": "Service",
               "name": "Web & App Development",
-              "description": "High-velocity web applications and cross-platform mobile apps.",
+              "description": "High-velocity web applications, modern responsive interfaces, and cross-platform mobile apps.",
             },
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Cloud Management",
-              "description": "Cloud infrastructure orchestration, CI/CD automation, and 24/7 reliability management.",
+              "name": "Cloud Infrastructure & Management",
+              "description": "Multi-cloud orchestration across AWS, Azure, and Supabase with container meshes and 99.99% reliability.",
             },
           },
           {
@@ -144,34 +154,37 @@ export default function RootLayout({
             "itemOffered": {
               "@type": "Service",
               "name": "System Design",
-              "description": "High-load distributed systems, microservices, and database architecture.",
+              "description": "High-load distributed systems, microservices design, and zero-bottleneck data flow.",
             },
           },
         ],
       },
       {
         "@type": "WebSite",
-        "@id": "https://reversun.com/#website",
-        "url": "https://reversun.com",
+        "@id": "https://www.reversun.com/#website",
+        "url": "https://www.reversun.com",
         "name": "Reversun",
-        "publisher": { "@id": "https://reversun.com/#organization" },
+        "description": "Creative Technology & Engineering Company",
+        "publisher": { "@id": "https://www.reversun.com/#organization" },
       },
       {
         "@type": "SoftwareApplication",
+        "@id": "https://www.reversun.com/#presenza",
         "name": "Presenza",
         "applicationCategory": "EducationalApplication",
         "operatingSystem": "All",
-        "description": "Smart, rapid institutional and college attendance application taking batch attendance in approximately 1 minute.",
-        "author": { "@id": "https://reversun.com/#organization" },
+        "description": "Intelligent, high-speed attendance application engineered to complete full classroom and college attendance in approximately 1 minute, eliminating roll-call delays and proxy errors.",
+        "author": { "@id": "https://www.reversun.com/#organization" },
       },
       {
         "@type": "SoftwareApplication",
+        "@id": "https://quanbit.tech/#software",
         "name": "QuanBit",
         "applicationCategory": "EducationalApplication",
         "operatingSystem": "Web",
-        "url": "https://quanbit.tech",
-        "description": "AI-based quantum algorithm learning and interactive simulation platform.",
-        "author": { "@id": "https://reversun.com/#organization" },
+        "url": "https://www.quanbit.tech",
+        "description": "Interactive quantum computing and algorithm learning platform featuring live Qiskit Aer simulation, 3D Bloch sphere visualization with entanglement support, and Schrödinger AI Socratic tutoring.",
+        "author": { "@id": "https://www.reversun.com/#organization" },
       },
     ],
   };

@@ -32,22 +32,30 @@
 }
 
 .brandLink {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
   text-decoration: none;
+  background: #FFFFFF;
+  padding: 10px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  width: fit-content;
+  max-width: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.brandLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
 }
 
 .brandLogo {
-  height: 40px;
+  height: 44px;
   width: auto;
-  max-width: 200px;
+  max-width: 210px;
   object-fit: contain;
-  transition: transform 0.25s ease;
-}
-
-.brandLink:hover .brandLogo {
-  transform: scale(1.03);
+  display: block;
 }
 
 .brandName {

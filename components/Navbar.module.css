@@ -37,9 +37,9 @@
 }
 
 .logoImg {
-  height: 40px;
+  height: 48px;
   width: auto;
-  max-width: 200px;
+  max-width: 240px;
   object-fit: contain;
   transition: transform 0.25s ease, filter 0.25s ease;
 }
@@ -242,6 +242,59 @@
   border-bottom: 1px solid #F1F4F8;
 }
 
+/* Floating Mobile Contact Button (Bottom Right) */
+.floatingMobileContact {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  z-index: 999;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #FC6235 0%, #FF4D1A 100%);
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  padding: 12px 20px;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 0 6px 22px rgba(252, 98, 53, 0.45), 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  animation: floatIn 0.4s ease-out;
+}
+
+.floatingContactIcon {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.floatingMobileContact:hover,
+.floatingMobileContact:active {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(252, 98, 53, 0.55), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.floatingContactActive {
+  background: linear-gradient(135deg, #122547 0%, #0A1428 100%);
+  border-color: rgba(252, 98, 53, 0.5);
+  box-shadow: 0 6px 22px rgba(18, 37, 71, 0.45);
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (max-width: 1080px) {
   .searchBar {
     display: none;
@@ -257,5 +310,8 @@
   }
   .mobileMenuBtn {
     display: block;
+  }
+  .floatingMobileContact {
+    display: inline-flex;
   }
 }

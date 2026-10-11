@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 interface NavbarProps {
@@ -40,9 +40,9 @@ export default function Navbar({ onOpenSearch, onOpenContact }: NavbarProps) {
           <Image
             src="/REVERSUN LOGO.svg"
             alt="Reversun"
-            width={180}
-            height={42}
-            style={{ width: "auto", height: "40px" }}
+            width={210}
+            height={50}
+            style={{ width: "auto", height: "48px" }}
             className={styles.logoImg}
             priority
           />
@@ -122,6 +122,17 @@ export default function Navbar({ onOpenSearch, onOpenContact }: NavbarProps) {
           </Link>
         </div>
       )}
+
+      {/* Floating Mobile Contact Button (Bottom Right) */}
+      <Link
+        href="/contact"
+        className={`${styles.floatingMobileContact} ${pathname === "/contact" ? styles.floatingContactActive : ""}`}
+        aria-label="Contact Us"
+        id="floating-mobile-contact-btn"
+      >
+        <Mail size={18} className={styles.floatingContactIcon} />
+        <span>Contact Us</span>
+      </Link>
     </header>
   );
 }

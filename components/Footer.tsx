@@ -21,9 +21,9 @@ export default function Footer({ onOpenContact }: FooterProps = {}) {
               <Image
                 src="/REVERSUN LOGO.svg"
                 alt="Reversun"
-                width={180}
-                height={42}
-                style={{ width: "auto", height: "40px" }}
+                width={210}
+                height={50}
+                style={{ width: "auto", height: "48px" }}
                 className={styles.brandLogo}
               />
             </Link>

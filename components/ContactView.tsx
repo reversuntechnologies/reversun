@@ -74,7 +74,7 @@ export default function ContactView() {
       _subject: `Reversun Inquiry [${interestType.toUpperCase()}: ${selectedItem}] from ${userName || userEmail}`,
       _template: "table",
       _captcha: "false",
-      website: "https://reversun.com",
+      website: "https://www.reversun.com",
     };
 
     try {
