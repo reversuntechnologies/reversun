@@ -201,12 +201,51 @@
 
 .mobileMenuBtn {
   display: none;
-  background: none;
-  border: none;
-  color: var(--text-main);
-  font-size: 24px;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid rgba(27, 51, 96, 0.16);
+  border-radius: 10px;
+  color: var(--primary-navy);
+  width: 42px;
+  height: 42px;
   cursor: pointer;
-  padding: 8px;
+  padding: 0;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(18, 37, 71, 0.06);
+  z-index: 102;
+  flex-shrink: 0;
+}
+
+.mobileMenuBtn:hover {
+  background: #F8FAFC;
+  border-color: var(--primary-orange);
+  color: var(--primary-orange);
+}
+
+.mobileMenuBtn:active {
+  transform: scale(0.94);
+}
+
+.drawerCtaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-navy-pill);
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 4px 18px rgba(18, 37, 71, 0.35);
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+}
+
+.drawerCtaBtn:hover {
+  background: var(--primary-orange);
 }
 
 /* Mobile Drawer */
@@ -301,26 +340,25 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .navContainer {
-    height: 60px;
+    height: 62px;
   }
   .logoImg {
-    height: 36px;
-    max-width: 170px;
+    height: 38px;
+    max-width: 175px;
   }
   .navLinks {
-    display: none;
+    display: none !important;
   }
-  .ctaBtn {
-    display: none;
+  .desktopCtaBtn {
+    display: none !important;
   }
   .mobileMenuBtn {
-    display: block;
-    padding: 6px;
+    display: flex !important;
   }
   .mobileDrawer {
-    top: 60px;
+    top: 62px;
     padding: 20px 16px;
     gap: 16px;
   }
@@ -329,11 +367,13 @@
     padding: 10px 0;
   }
   .floatingMobileContact {
-    display: inline-flex;
-    bottom: 20px;
-    right: 16px;
-    padding: 10px 16px;
-    font-size: 13px;
+    display: inline-flex !important;
+    position: fixed !important;
+    bottom: 24px !important;
+    right: 20px !important;
+    z-index: 99999 !important;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
   }
 }
 
@@ -343,15 +383,19 @@
   }
   .logoImg {
     height: 32px;
-    max-width: 155px;
+    max-width: 150px;
   }
   .mobileDrawer {
     top: 56px;
   }
+  .mobileMenuBtn {
+    width: 38px;
+    height: 38px;
+  }
   .floatingMobileContact {
-    bottom: 16px;
-    right: 14px;
-    padding: 9px 15px;
-    font-size: 12.5px;
+    bottom: 20px !important;
+    right: 16px !important;
+    padding: 10px 17px !important;
+    font-size: 13px !important;
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Zap, Heart, Users, CheckCircle2 } from "lucide-react";
@@ -10,7 +10,51 @@ interface HeroProps {
   onOpenContact?: () => void;
 }
 
+type CapabilityTabKey = "web-mobile" | "modern-design" | "fast-delivery";
+
+interface CapabilityData {
+  badgeLabel: string;
+  badgeRightTag: string;
+  heading: string;
+  paragraph: string;
+  footerNote: string;
+  footerRight: string;
+}
+
+const CAPABILITY_TABS: Record<CapabilityTabKey, CapabilityData> = {
+  "web-mobile": {
+    badgeLabel: "WHAT WE DO",
+    badgeRightTag: "Built With Care",
+    heading: "Building Digital Products Together",
+    paragraph:
+      "We design and develop modern web apps, mobile apps, and smart software. From initial idea to final launch, we help you bring your vision to life with speed, craft, and clarity.",
+    footerNote: "Thoughtful Design & Clean Code",
+    footerRight: "Idea to Launch",
+  },
+  "modern-design": {
+    badgeLabel: "MODERN DESIGN",
+    badgeRightTag: "Pixel Perfect",
+    heading: "Intuitive Interfaces & Striking Aesthetics",
+    paragraph:
+      "Clean visual hierarchies, fluid micro-interactions, and robust design systems. We craft interfaces that look stunning, feel effortless to use, and leave an unforgettable brand impression.",
+    footerNote: "Human-Centered UX & Design Systems",
+    footerRight: "Figma to Code",
+  },
+  "fast-delivery": {
+    badgeLabel: "FAST DELIVERY",
+    badgeRightTag: "Rapid Sprints",
+    heading: "Rapid Prototyping to Scalable Production",
+    paragraph:
+      "Agile execution without unnecessary bureaucracy. We turn concepts into rock-solid, production-ready software in weeks, maintaining elite code standards, security, and continuous delivery.",
+    footerNote: "Agile CI/CD & Fast Turnarounds",
+    footerRight: "Sprint to Scale",
+  },
+};
+
 export default function Hero({ onOpenContact }: HeroProps = {}) {
+  const [activeTab, setActiveTab] = useState<CapabilityTabKey>("web-mobile");
+  const currentCapability = CAPABILITY_TABS[activeTab];
+
   return (
     <section className={styles.heroSection}>
       <div className="container">
@@ -69,34 +113,68 @@ export default function Hero({ onOpenContact }: HeroProps = {}) {
             <div className={styles.cardTopBar}>
               <div className={styles.badgeLeft}>
                 <span className={styles.pulseDotSmall} />
-                <span className={styles.badgeLabel}>WHAT WE DO</span>
+                <span className={styles.badgeLabel}>{currentCapability.badgeLabel}</span>
               </div>
-              <span className={styles.badgeRightTag}>Built With Care</span>
+              <span className={styles.badgeRightTag}>{currentCapability.badgeRightTag}</span>
             </div>
 
-            <div className={styles.cardContent}>
+            <div key={activeTab} className={`${styles.cardContent} ${styles.cardFadeTransition}`}>
               <h3 className={styles.cardMainHeading}>
-                Building Digital Products Together
+                {currentCapability.heading}
               </h3>
               <p className={styles.cardParagraph}>
-                We design and develop modern web apps, mobile apps, and smart software.
-                From initial idea to final launch, we help you bring your vision to life
-                with speed, craft, and clarity.
+                {currentCapability.paragraph}
               </p>
 
-              <div className={styles.techPillRow}>
-                <span className={styles.techPillOrange}>Web &amp; Mobile</span>
-                <span className={styles.techPillGray}>Modern Design</span>
-                <span className={styles.techPillGray}>Fast Delivery</span>
+              <div className={styles.techPillRow} role="tablist" aria-label="Capabilities tabs">
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeTab === "web-mobile"}
+                  className={`${styles.techPillBtn} ${
+                    activeTab === "web-mobile"
+                      ? styles.techPillActive
+                      : styles.techPillInactive
+                  }`}
+                  onClick={() => setActiveTab("web-mobile")}
+                >
+                  Web &amp; Mobile
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeTab === "modern-design"}
+                  className={`${styles.techPillBtn} ${
+                    activeTab === "modern-design"
+                      ? styles.techPillActive
+                      : styles.techPillInactive
+                  }`}
+                  onClick={() => setActiveTab("modern-design")}
+                >
+                  Modern Design
+                </button>
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={activeTab === "fast-delivery"}
+                  className={`${styles.techPillBtn} ${
+                    activeTab === "fast-delivery"
+                      ? styles.techPillActive
+                      : styles.techPillInactive
+                  }`}
+                  onClick={() => setActiveTab("fast-delivery")}
+                >
+                  Fast Delivery
+                </button>
               </div>
             </div>
 
             <div className={styles.cardBottomBar}>
               <span className={styles.footerNoteLeft}>
                 <Heart size={14} className={styles.heartIcon} />
-                <span>Thoughtful Design &amp; Clean Code</span>
+                <span>{currentCapability.footerNote}</span>
               </span>
-              <span className={styles.footerNoteRight}>Idea to Launch</span>
+              <span className={styles.footerNoteRight}>{currentCapability.footerRight}</span>
             </div>
           </div>
 
