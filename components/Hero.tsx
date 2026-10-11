@@ -43,15 +43,17 @@ export default function Hero({ onOpenContact }: HeroProps = {}) {
 
   const handleMouseDown = () => {
     if (titleAreaRef.current) {
-      titleAreaRef.current.style.setProperty("--lens-size", "170px");
-      titleAreaRef.current.style.setProperty("--lens-radius", "85px");
+      titleAreaRef.current.style.setProperty("--lens-size", "190px");
+      titleAreaRef.current.style.setProperty("--lens-radius", "95px");
+      titleAreaRef.current.style.setProperty("--lens-zoom", "1.48");
     }
   };
 
   const handleMouseUp = () => {
     if (titleAreaRef.current) {
-      titleAreaRef.current.style.setProperty("--lens-size", "150px");
-      titleAreaRef.current.style.setProperty("--lens-radius", "75px");
+      titleAreaRef.current.style.setProperty("--lens-size", "168px");
+      titleAreaRef.current.style.setProperty("--lens-radius", "84px");
+      titleAreaRef.current.style.setProperty("--lens-zoom", "1.38");
     }
   };
 
@@ -75,7 +77,7 @@ export default function Hero({ onOpenContact }: HeroProps = {}) {
                 <span>We Don&apos;t Just</span>
                 <span className={styles.doubleArrowIcon}>
                   <svg width="56" height="36" viewBox="0 0 56 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14 6L28 18L14 30M28 6L42 18L28 30" stroke="#FC6235" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M14 6L28 18L14 30M28 6L42 18L28 30" stroke="#FC6235" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </span>
               </div>
@@ -99,38 +101,47 @@ export default function Hero({ onOpenContact }: HeroProps = {}) {
               </div>
             </h1>
 
-            {/* 100% Circular Lens Follower (Completely unclipped, no box borders) */}
+            {/* Realistic Magnifying Zoom Glass Rig with Handle */}
             <div
-              className={`${styles.lensFollower} ${
-                isHovering ? styles.lensFollowerActive : ""
+              className={`${styles.lensRig} ${
+                isHovering ? styles.lensRigActive : ""
               }`}
               aria-hidden="true"
             >
-              <div className={styles.lensTextInner}>
-                <div className={styles.headline}>
-                  <div className={styles.lineOne}>
-                    <span>We Don&apos;t Just</span>
-                    <span className={styles.doubleArrowIcon}>
-                      <svg width="56" height="36" viewBox="0 0 56 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 6L28 18L14 30M28 6L42 18L28 30" stroke="#FFE600" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
-                  </div>
-                  <div className={styles.lineTwo}>
-                    <span>Engineer Systems.</span>
-                    <span>We</span>
-                  </div>
-                  <div className={styles.lineThree}>
-                    <span>Give Them</span>
-                    <span className={styles.headlineGradient}>Velocity</span>
-                    <div className={styles.inlineCtaBtn}>
-                      <span className={styles.ctaBtnArrowWrap}>
-                        <ArrowRight size={18} />
+              {/* Circular Optical Glass Head */}
+              <div className={styles.lensFollower}>
+                <div className={styles.lensTextInner}>
+                  <div className={styles.headline}>
+                    <div className={styles.lineOne}>
+                      <span>We Don&apos;t Just</span>
+                      <span className={styles.doubleArrowIcon}>
+                        <svg width="56" height="36" viewBox="0 0 56 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M14 6L28 18L14 30M28 6L42 18L28 30" stroke="#FFE600" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </span>
-                      <span>Work With Us</span>
+                    </div>
+                    <div className={styles.lineTwo}>
+                      <span className={styles.headlineNavy}>Engineer Systems.</span>
+                      <span>We</span>
+                    </div>
+                    <div className={styles.lineThree}>
+                      <span>Give Them</span>
+                      <span className={styles.headlineGradient}>Velocity</span>
+                      <div className={styles.inlineCtaBtn}>
+                        <span className={styles.ctaBtnArrowWrap}>
+                          <ArrowRight size={18} />
+                        </span>
+                        <span>Work With Us</span>
+                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Realistic Magnifying Glass Handle */}
+              <div className={styles.lensHandle}>
+                <div className={styles.handleNeck} />
+                <div className={styles.handleGrip} />
               </div>
             </div>
           </div>

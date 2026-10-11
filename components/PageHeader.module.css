@@ -10,23 +10,29 @@
 /* Big Bold Headline Container matching DoodleByte Screenshot */
 .titleArea {
   position: relative;
-  cursor: default;
+  cursor: none !important;
   overflow: visible;
   display: inline-block;
   margin: 0 auto 24px auto;
   user-select: none;
-  --lens-size: 120px;
-  --lens-radius: 60px;
+  --lens-size: 140px;
+  --lens-radius: 70px;
+  --lens-zoom: 1.38;
   --lens-x: -300px;
   --lens-y: -300px;
 }
 
+.titleArea * {
+  cursor: none !important;
+}
+
 .bigTitle {
-  font-size: clamp(48px, 6.8vw, 92px);
-  font-weight: 900;
+  font-family: 'Montserrat', var(--font-montserrat), var(--font-sans), sans-serif !important;
+  font-size: clamp(44px, 5.8vw, 84px);
+  font-weight: 500 !important;
   color: #101E35;
-  letter-spacing: -2.5px;
-  line-height: 1.02;
+  letter-spacing: -1px;
+  line-height: 1.15;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -71,54 +77,163 @@
   box-shadow: 0 0 10px var(--primary-orange);
 }
 
-/* 100% Round Lens Follower */
-.lensFollower {
+/* Container Rig coordinating Lens Glass + Handle together */
+.lensRig {
   position: absolute;
-  width: var(--lens-size, 120px);
-  height: var(--lens-size, 120px);
-  border-radius: 50%;
-  overflow: hidden;
-  pointer-events: none;
-  background: #00A854; /* Emerald green from screenshot */
-  border: 2.5px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 30px rgba(0, 168, 84, 0.45), inset 0 0 16px rgba(255, 255, 255, 0.3);
-  left: calc(var(--lens-x) - var(--lens-radius, 60px));
-  top: calc(var(--lens-y) - var(--lens-radius, 60px));
+  width: var(--lens-size, 140px);
+  height: var(--lens-size, 140px);
+  left: calc(var(--lens-x) - var(--lens-radius, 70px));
+  top: calc(var(--lens-y) - var(--lens-radius, 70px));
   z-index: 25;
+  pointer-events: none;
   opacity: 0;
   transform: scale(0.65);
   transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: left, top, transform, opacity;
+  overflow: visible;
 }
 
-.lensFollowerActive {
+.lensRigActive {
   opacity: 1;
   transform: scale(1);
 }
 
+/* 100% Round Lens Glass with Zoom Optics */
+.lensFollower {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #00A854; /* Emerald green */
+  border: 3.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 16px 36px rgba(0, 0, 0, 0.32),
+    0 4px 16px rgba(0, 168, 84, 0.5),
+    inset 0 0 24px rgba(0, 0, 0, 0.25),
+    inset 0 2px 6px rgba(255, 255, 255, 0.7);
+  z-index: 2;
+}
+
+/* Specular glass glare & convex lens sheen */
+.lensFollower::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 25%,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.15) 40%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.35);
+}
+
+/* Inner optical glass bevel ring */
+.lensFollower::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  z-index: 11;
+}
+
+/* Realistic Magnifying Glass Handle */
+.lensHandle {
+  position: absolute;
+  top: calc(50% + (var(--lens-radius, 70px) * 0.65));
+  left: calc(50% + (var(--lens-radius, 70px) * 0.65));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+  transform: rotate(-45deg);
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(4px 10px 18px rgba(0, 0, 0, 0.42));
+}
+
+.handleNeck {
+  width: 13px;
+  height: 14px;
+  background: linear-gradient(90deg, #9ca3af 0%, #f3f4f6 45%, #6b7280 100%);
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8), 0 2px 5px rgba(0, 0, 0, 0.25);
+  margin-top: -5px;
+}
+
+.handleGrip {
+  width: 16px;
+  height: 64px;
+  background: linear-gradient(90deg, #0d1b36 0%, #1e3a8a 40%, #0f172a 100%);
+  border-radius: 6px 6px 10px 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    inset 2px 0 4px rgba(255, 255, 255, 0.25),
+    inset -2px 0 4px rgba(0, 0, 0, 0.6),
+    0 4px 14px rgba(0, 0, 0, 0.35);
+  position: relative;
+}
+
+.handleGrip::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(90deg, #9ca3af 0%, #ffffff 50%, #6b7280 100%);
+  border-radius: 0 0 8px 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Optical Magnification: text is zoomed around the exact cursor coordinates */
 .lensTextInner {
   position: absolute;
-  left: calc(-1 * var(--lens-x) + var(--lens-radius, 60px));
-  top: calc(-1 * var(--lens-y) + var(--lens-radius, 60px));
+  left: calc(-1 * var(--lens-x) + var(--lens-radius, 70px));
+  top: calc(-1 * var(--lens-y) + var(--lens-radius, 70px));
   width: var(--title-width, 1100px);
   pointer-events: none;
+  transform-origin: var(--lens-x) var(--lens-y);
+  transform: scale(var(--lens-zoom, 1.38));
+  will-change: transform, left, top;
 }
 
-.lensTextInner .bigTitle {
-  color: #FFE600 !important;
+/* --- Distinct Colors Inside the Lens for Each Line --- */
+.lensTextInner .bigTitle > div:nth-child(1) {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
 }
 
-.lensTextInner .bigTitle span {
+.lensTextInner .bigTitle > div:nth-child(2) {
   color: #FFE600 !important;
+  -webkit-text-fill-color: #FFE600 !important;
+}
+
+.lensTextInner .titleRow {
+  color: #FFCDB2 !important;
+}
+
+.lensTextInner .titleRow > span {
+  color: #FFCDB2 !important;
+  -webkit-text-fill-color: #FFCDB2 !important;
 }
 
 .lensTextInner .inlineCardPreview {
-  background: #FFE600 !important;
-  color: #004D26 !important;
-  border-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  color: #007A3D !important;
+  border: 1px solid #FFE600 !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
 }
 
 .lensTextInner .inlinePreviewDot {
-  background: #004D26 !important;
+  background: #007A3D !important;
   box-shadow: none;
 }
 

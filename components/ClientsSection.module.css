@@ -116,10 +116,10 @@
 }
 
 .activeFilterBtn {
-  background: var(--primary-navy);
+  background: var(--gradient-navy-pill);
   color: #FFFFFF;
-  border-color: var(--primary-navy);
-  box-shadow: 0 4px 15px rgba(27, 51, 96, 0.2);
+  border-color: #274C8A;
+  box-shadow: 0 4px 18px rgba(27, 51, 96, 0.3);
 }
 
 /* Case Study Cards Grid */
@@ -235,7 +235,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--primary-navy);
+  background: var(--gradient-navy-pill);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: #FFFFFF;
   font-size: 12px;
   font-weight: 700;

@@ -98,9 +98,17 @@
   color: var(--primary-navy);
 }
 
-.channelMeta span {
+.channelMeta span,
+.channelMeta a {
   font-size: 13px;
   color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.channelMeta a:hover {
+  color: var(--primary-orange);
+  text-decoration: underline;
 }
 
 /* FAQ Accordion */

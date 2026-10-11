@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 :root {
   --primary-orange: #FC6235;
   --primary-navy: #1B3360;
@@ -9,6 +11,15 @@
   --navy-dark: #0D1B36;
   --navy-deep: #081122;
   --navy-surface: #14284D;
+
+  /* Premium Multi-Stop Navy Gradients */
+  --gradient-navy-banner: linear-gradient(135deg, #13274B 0%, #0C1B35 50%, #060E1C 100%);
+  --gradient-navy-card: linear-gradient(140deg, #1C3A6E 0%, #13274B 50%, #0A162B 100%);
+  --gradient-navy-footer: linear-gradient(180deg, #0F1E38 0%, #091325 50%, #050B16 100%);
+  --gradient-navy-pill: linear-gradient(135deg, #1E3D73 0%, #122547 100%);
+  --gradient-navy-hover: linear-gradient(135deg, #244988 0%, #17305C 60%, #0E1D3B 100%);
+  --gradient-navy-surface: linear-gradient(145deg, #13274B 0%, #0C1B35 60%, #071020 100%);
+
   --bg-page: #FAF9F6;
   --bg-card: #FFFFFF;
   --border-light: #E9EDF5;
@@ -28,6 +39,14 @@
   --shadow-md: 0 8px 25px rgba(27, 51, 96, 0.08);
   --shadow-lg: 0 20px 45px rgba(27, 51, 96, 0.12);
   --shadow-orange: 0 10px 30px rgba(252, 98, 53, 0.35);
+
+  /* Typography Design Tokens (Montserrat - DoodleByte Typeface) */
+  --font-sans: 'Montserrat', var(--font-montserrat), -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  --tracking-hero: -0.02em;
+  --tracking-heading: -0.015em;
+  --tracking-subhead: -0.01em;
+  --tracking-body: -0.005em;
+  --tracking-caps: 0.06em;
 }
 
 * {
@@ -38,11 +57,12 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-sans);
   color: var(--text-main);
   background-color: var(--bg-page);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -52,6 +72,32 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-page);
   color: var(--text-main);
+  font-family: var(--font-sans);
+  letter-spacing: var(--tracking-body);
+}
+
+/* Headings in Montserrat with elegant, slender weights & optical tracking */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: inherit;
+}
+
+h1 {
+  letter-spacing: var(--tracking-hero);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+h2 {
+  letter-spacing: var(--tracking-heading);
+  font-weight: 500;
+  line-height: 1.18;
+}
+
+h3 {
+  letter-spacing: var(--tracking-subhead);
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 a {
@@ -65,10 +111,21 @@ button {
   border: none;
   background: none;
   outline: none;
+  letter-spacing: var(--tracking-body);
 }
 
 input, textarea, select {
   font-family: inherit;
+  letter-spacing: var(--tracking-body);
+}
+
+/* Eyebrows, UI labels and category tags */
+.eyebrow-badge,
+[data-ui="label"] {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
 }
 
 /* Animations */

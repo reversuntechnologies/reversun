@@ -68,10 +68,10 @@
 }
 
 .activeTabBtn {
-  background: var(--primary-navy);
+  background: var(--gradient-navy-pill);
   color: #FFFFFF;
-  border-color: var(--primary-navy);
-  box-shadow: 0 8px 25px rgba(27, 51, 96, 0.25);
+  border-color: #274C8A;
+  box-shadow: 0 8px 25px rgba(27, 51, 96, 0.35);
 }
 
 /* Product Showcase Container */
@@ -186,14 +186,26 @@
 
 /* Interactive Visual / Terminal / Architecture Display */
 .productVisualPane {
-  background: var(--navy-dark);
+  background: var(--gradient-navy-surface);
   padding: 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
+}
+
+.productVisualPane::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(252, 98, 53, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .terminalWindow {

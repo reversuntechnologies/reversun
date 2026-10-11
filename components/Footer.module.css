@@ -1,8 +1,21 @@
 .footer {
-  background: var(--navy-dark);
+  background: var(--gradient-navy-footer);
   color: #FFFFFF;
   padding: 80px 0 32px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(252, 98, 53, 0.45) 50%, transparent 100%);
+  pointer-events: none;
 }
 
 .footerTop {

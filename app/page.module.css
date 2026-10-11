@@ -123,7 +123,7 @@
 /* Bottom CTA Banner */
 .ctaBanner {
   margin-top: 80px;
-  background: linear-gradient(135deg, var(--primary-navy) 0%, #17376F 100%);
+  background: var(--gradient-navy-banner);
   border-radius: var(--radius-xl);
   padding: 60px 48px;
   color: #FFFFFF;
@@ -131,8 +131,22 @@
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(8, 17, 34, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaBanner::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(252, 98, 53, 0.18) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .ctaLeftTitle {

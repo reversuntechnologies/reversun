@@ -44,10 +44,10 @@
 }
 
 .activeCircle {
-  background: var(--primary-navy);
+  background: var(--gradient-navy-pill);
   color: #FFFFFF !important;
-  border-color: var(--primary-navy);
-  box-shadow: 0 6px 18px rgba(27, 51, 96, 0.3);
+  border-color: #274C8A;
+  box-shadow: 0 6px 18px rgba(27, 51, 96, 0.35);
   transform: scale(1.08);
 }
 
@@ -64,8 +64,9 @@
 .tooltip {
   position: absolute;
   right: 52px;
-  background: var(--primary-navy);
+  background: var(--gradient-navy-pill);
   color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   font-size: 12px;
   font-weight: 700;
   padding: 6px 14px;

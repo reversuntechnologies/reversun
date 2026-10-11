@@ -75,10 +75,10 @@
 }
 
 .activeFilterTab {
-  background: var(--primary-navy);
+  background: var(--gradient-navy-pill);
   color: #FFFFFF;
-  border-color: var(--primary-navy);
-  box-shadow: 0 4px 15px rgba(27, 51, 96, 0.2);
+  border-color: #274C8A;
+  box-shadow: 0 4px 18px rgba(27, 51, 96, 0.3);
 }
 
 /* Services Grid */

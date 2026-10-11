@@ -54,15 +54,17 @@ export default function PageHeader({
 
   const handleMouseDown = () => {
     if (titleAreaRef.current) {
-      titleAreaRef.current.style.setProperty("--lens-size", "140px");
-      titleAreaRef.current.style.setProperty("--lens-radius", "70px");
+      titleAreaRef.current.style.setProperty("--lens-size", "160px");
+      titleAreaRef.current.style.setProperty("--lens-radius", "80px");
+      titleAreaRef.current.style.setProperty("--lens-zoom", "1.48");
     }
   };
 
   const handleMouseUp = () => {
     if (titleAreaRef.current) {
-      titleAreaRef.current.style.setProperty("--lens-size", "120px");
-      titleAreaRef.current.style.setProperty("--lens-radius", "60px");
+      titleAreaRef.current.style.setProperty("--lens-size", "140px");
+      titleAreaRef.current.style.setProperty("--lens-radius", "70px");
+      titleAreaRef.current.style.setProperty("--lens-zoom", "1.38");
     }
   };
 
@@ -94,26 +96,34 @@ export default function PageHeader({
               </div>
             </h1>
 
-            {/* 100% Round Lens Follower (Revealed exclusively on hover) */}
+            {/* Realistic Magnifying Zoom Glass Rig with Handle */}
             <div
-              className={`${styles.lensFollower} ${
-                isHovering ? styles.lensFollowerActive : ""
+              className={`${styles.lensRig} ${
+                isHovering ? styles.lensRigActive : ""
               }`}
               aria-hidden="true"
             >
-              <div className={styles.lensTextInner}>
-                <div className={styles.bigTitle}>
-                  {titleLine1 && <div>{titleLine1}</div>}
-                  {titleLine2 && <div>{titleLine2}</div>}
-                  <div className={styles.titleRow}>
-                    {titleLine3 && <span>{titleLine3}</span>}
-                    <span className={styles.inlineCardPreview}>
-                      <span className={styles.inlinePreviewDot} />
-                      <span>{previewText}</span>
-                    </span>
-                    {titleLine4 && <span>{titleLine4}</span>}
+              <div className={styles.lensFollower}>
+                <div className={styles.lensTextInner}>
+                  <div className={styles.bigTitle}>
+                    {titleLine1 && <div>{titleLine1}</div>}
+                    {titleLine2 && <div>{titleLine2}</div>}
+                    <div className={styles.titleRow}>
+                      {titleLine3 && <span>{titleLine3}</span>}
+                      <span className={styles.inlineCardPreview}>
+                        <span className={styles.inlinePreviewDot} />
+                        <span>{previewText}</span>
+                      </span>
+                      {titleLine4 && <span>{titleLine4}</span>}
+                    </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Realistic Magnifying Glass Handle */}
+              <div className={styles.lensHandle}>
+                <div className={styles.handleNeck} />
+                <div className={styles.handleGrip} />
               </div>
             </div>
           </div>

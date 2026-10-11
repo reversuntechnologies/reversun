@@ -87,7 +87,7 @@ export default function ContactSection({ initialService = "" }: { initialService
                 </div>
                 <div className={styles.channelMeta}>
                   <strong>Direct Inquiries</strong>
-                  <span>hello@reversun.com</span>
+                  <a href="mailto:info@reversun.com">info@reversun.com</a>
                 </div>
               </div>
 
