@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Zap, Heart, Users, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Zap, Heart, Users, Sparkles } from "lucide-react";
 import styles from "./Hero.module.css";
 
 interface HeroProps {
@@ -204,19 +204,50 @@ export default function Hero({ onOpenContact }: HeroProps = {}) {
           </div>
         </div>
 
-        {/* Trust Client Strip */}
+        {/* Proprietary Products Strip */}
         <div className={`${styles.trustClientStrip} animateComponent stagger-3`}>
           <div className={styles.trustLeft}>
-            <CheckCircle2 size={18} className={styles.verifyIcon} />
+            <Sparkles size={18} className={styles.verifyIcon} />
             <span>
-              Trusted by <strong className={styles.trustHighlight}>ambitious businesses</strong> worldwide:
+              Our Proprietary <strong className={styles.trustHighlight}>Products</strong>:
             </span>
           </div>
           <div className={styles.trustRight}>
-            <div className={styles.deployPill}>
-              <span className={styles.pulseDot} />
-              <span>Client Deployments Adding Soon</span>
-            </div>
+            <Link
+              href="/product?item=presenza"
+              className={styles.productPill}
+              title="Presenza - 1-Minute Smart Attendance Application"
+            >
+              <span className={styles.productLogoBox}>
+                <Image
+                  src="/products/presenza-logo.png"
+                  alt="Presenza Logo"
+                  width={22}
+                  height={22}
+                  className={styles.productLogoImg}
+                />
+              </span>
+              <span className={styles.productPillName}>Presenza</span>
+              <span className={styles.productPillBadge}>Attendance</span>
+            </Link>
+
+            <Link
+              href="/product?item=quanbit"
+              className={styles.productPill}
+              title="QuanBit - Quantum Algorithm Learning Platform"
+            >
+              <span className={styles.productLogoBox}>
+                <Image
+                  src="/products/quanbit-logo.png"
+                  alt="QuanBit Logo"
+                  width={22}
+                  height={22}
+                  className={styles.productLogoImg}
+                />
+              </span>
+              <span className={styles.productPillName}>QuanBit</span>
+              <span className={styles.productPillBadge}>Quantum AI</span>
+            </Link>
           </div>
         </div>
       </div>

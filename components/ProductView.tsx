@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Clock,
@@ -25,10 +26,24 @@ interface ProductData {
   ctaText: string;
   ctaHref: string;
   externalUrl?: string;
+  logoUrl: string;
 }
 
 export default function ProductView() {
   const [activeKey, setActiveKey] = useState<"presenza" | "quanbit">("presenza");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const item = params.get("item")?.toLowerCase();
+      const hash = window.location.hash?.replace("#", "").toLowerCase();
+      if (item === "quanbit" || hash === "quanbit") {
+        setActiveKey("quanbit");
+      } else if (item === "presenza" || hash === "presenza") {
+        setActiveKey("presenza");
+      }
+    }
+  }, []);
 
   const productData: Record<"presenza" | "quanbit", ProductData> = {
     presenza: {
@@ -51,6 +66,7 @@ export default function ProductView() {
       ],
       ctaText: "Inquire About Presenza",
       ctaHref: "/contact?product=Presenza",
+      logoUrl: "/products/presenza-logo.png",
     },
     quanbit: {
       categoryTag: "Deep Tech & Quantum Education",
@@ -75,6 +91,7 @@ export default function ProductView() {
       ctaText: "Inquire About QuanBit",
       ctaHref: "/contact?product=QuanBit",
       externalUrl: "https://www.quanbit.tech/",
+      logoUrl: "/products/quanbit-logo.png",
     },
   };
 
@@ -124,8 +141,15 @@ export default function ProductView() {
                     className={`${styles.iconWrap} ${
                       activeKey === "presenza" ? styles.iconWrapActive : styles.iconWrapInactive
                     }`}
+                    style={{ backgroundColor: "#FFFFFF", padding: 3, border: activeKey === "presenza" ? "1.5px solid var(--primary-orange)" : "1px solid #E2E8F0" }}
                   >
-                    <Clock size={16} />
+                    <Image
+                      src="/products/presenza-logo.png"
+                      alt="Presenza"
+                      width={20}
+                      height={20}
+                      style={{ objectFit: "contain" }}
+                    />
                   </div>
                   <div>
                     <div className={styles.btnNameRow}>
@@ -159,8 +183,15 @@ export default function ProductView() {
                     className={`${styles.iconWrap} ${
                       activeKey === "quanbit" ? styles.iconWrapActive : styles.iconWrapInactive
                     }`}
+                    style={{ backgroundColor: "#FFFFFF", padding: 3, border: activeKey === "quanbit" ? "1.5px solid var(--primary-orange)" : "1px solid #E2E8F0" }}
                   >
-                    <Atom size={16} />
+                    <Image
+                      src="/products/quanbit-logo.png"
+                      alt="QuanBit"
+                      width={20}
+                      height={20}
+                      style={{ objectFit: "contain" }}
+                    />
                   </div>
                   <div>
                     <div className={styles.btnNameRow}>
@@ -194,8 +225,35 @@ export default function ProductView() {
               </div>
 
               <div className={styles.productTitleArea}>
-                <h2 className={styles.productHeading}>{current.title}</h2>
-                <p className={styles.productSubheading}>{current.subtitle}</p>
+                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                  <div
+                    style={{
+                      width: 44,
+                      height: 44,
+                      borderRadius: 12,
+                      backgroundColor: "#FFFFFF",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      padding: 5,
+                      boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                      border: "1px solid #E2E8F0",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <Image
+                      src={current.logoUrl}
+                      alt={current.title}
+                      width={34}
+                      height={34}
+                      style={{ objectFit: "contain" }}
+                    />
+                  </div>
+                  <div>
+                    <h2 className={styles.productHeading}>{current.title}</h2>
+                    <p className={styles.productSubheading}>{current.subtitle}</p>
+                  </div>
+                </div>
               </div>
 
               <p className={styles.productDescription}>{current.description}</p>

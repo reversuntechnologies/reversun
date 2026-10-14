@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { 
   Clock, 
@@ -97,8 +98,14 @@ export default function ProductSection({ onRequestDemo }: { onRequestDemo?: (pro
             activeProduct === "presenza" ? styles.activeTabBtn : ""
           }`}
         >
-          <div className={styles.tabBtnIcon}>
-            <Clock size={20} />
+          <div className={styles.tabBtnIcon} style={{ backgroundColor: "#FFFFFF", padding: 3, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Image
+              src="/products/presenza-logo.png"
+              alt="Presenza"
+              width={22}
+              height={22}
+              style={{ objectFit: "contain" }}
+            />
           </div>
           <div className={styles.tabBtnText}>
             <span className={styles.tabBtnName}>Presenza</span>
@@ -112,8 +119,14 @@ export default function ProductSection({ onRequestDemo }: { onRequestDemo?: (pro
             activeProduct === "quanbit" ? styles.activeTabBtn : ""
           }`}
         >
-          <div className={styles.tabBtnIcon}>
-            <Atom size={20} />
+          <div className={styles.tabBtnIcon} style={{ backgroundColor: "#FFFFFF", padding: 3, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Image
+              src="/products/quanbit-logo.png"
+              alt="QuanBit"
+              width={22}
+              height={22}
+              style={{ objectFit: "contain" }}
+            />
           </div>
           <div className={styles.tabBtnText}>
             <span className={styles.tabBtnName}>QuanBit</span>
