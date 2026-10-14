@@ -181,7 +181,7 @@ export default function Hero({ onOpenContact }: HeroProps = {}) {
           {/* Right Visual: Passionate Builders Team Card */}
           <div className={`${styles.teamShowcaseCard} animateComponent stagger-2`}>
             <Image
-              src="https://lh3.googleusercontent.com/aida/AEtjO1V55VhutXt5ZlJT-aSK3qNsy0wpYm1CGXIRBQ5CwaM7gvgg6emUTE87_VIRNXDDo5eIcvJsQPcjI598aqg5iBdutCZQzAIqTlIhy8RgIRJtnpkdNC58i1kndW5gGezmazwqCJAK1UVMzHErWNEAgsU1HM15Md3CzKk3VVrAD5d81EgLqse-vZofe_dwQ8m9AFY3l9RKyJf229fAfoRR0UqEBGoEcf0QE4EzoWgTvk6Xqpf0dhepy5XyGgOh"
+              src="/hero-team-2.jpg"
               alt="Reversun Team - Passionate Builders & Creators"
               fill
               className={styles.teamBgImg}
