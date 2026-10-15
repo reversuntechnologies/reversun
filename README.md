@@ -16,6 +16,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Contact Email Setup
+
+The contact form sends mail through Resend from the server. Copy `.env.example` to `.env.local`, create a Resend API key, and verify the sending domain in Resend before using the form in production.
+
+Required variables:
+
+```text
+RESEND_API_KEY=re_xxxxxxxxx
+CONTACT_FROM_EMAIL=Reversun Website <info@reversun.com>
+CONTACT_TO_EMAIL=info@reversun.com
+```
+
+Keep `RESEND_API_KEY` server-only. Add the same variables to the production hosting environment; never commit the real key.
+
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

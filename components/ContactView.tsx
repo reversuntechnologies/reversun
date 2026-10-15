@@ -64,13 +64,41 @@ export default function ContactView() {
     `Name: ${userName || "Not provided"}\nEmail: ${userEmail}\nType: ${interestType}\nInquiry area: ${selectedItem}\nMessage: ${userQuery || "No additional message provided."}`
   )}`;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!userEmail) return;
 
-    setStatus("success");
-    setStatusMsg("Your email draft is ready. Complete the send from your email client.");
-    window.location.href = mailtoHref;
+    setStatus("loading");
+    setStatusMsg("Sending your inquiry securely to info@reversun.com...");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: userName,
+          email: userEmail,
+          type: interestType,
+          inquiryArea: selectedItem,
+          message: userQuery,
+        }),
+      });
+
+      const result = (await response.json()) as { error?: string };
+      if (!response.ok) {
+        throw new Error(result.error || "The inquiry could not be delivered.");
+      }
+
+      setStatus("success");
+      setStatusMsg("Your inquiry was sent securely. Our team will reply from info@reversun.com.");
+    } catch (error) {
+      setStatus("error");
+      setStatusMsg(
+        error instanceof Error
+          ? error.message
+          : "The inquiry could not be delivered. You can email us directly instead."
+      );
+    }
   };
 
   return (
@@ -157,10 +185,10 @@ export default function ContactView() {
                   <div className={styles.sentIconWrap}>
                     <CheckCircle2 size={42} className={styles.sentSuccessIcon} />
                   </div>
-                  <h3 className={styles.sentTitle}>Inquiry Ready to Send</h3>
+                  <h3 className={styles.sentTitle}>Inquiry Sent Successfully</h3>
                   <p className={styles.sentDesc}>
                     Thank you, <strong>{userName || "Partner"}</strong>. Your inquiry for{" "}
-                    <strong>{selectedItem}</strong> has been prepared as an email to{" "}
+                    <strong>{selectedItem}</strong> was sent securely to{" "}
                     <strong>info@reversun.com</strong>. {statusMsg}
                   </p>
                   <div className={styles.sentSummaryBox}>
@@ -183,7 +211,7 @@ export default function ContactView() {
                   <div className={styles.sentActionRow}>
                     <a href={mailtoHref} className={styles.submitAgainBtn}>
                       <Send size={16} />
-                      <span>Open Email Draft</span>
+                      <span>Email Directly Instead</span>
                     </a>
                     <button
                       type="button"
