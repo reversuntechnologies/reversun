@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ProductView from "@/components/ProductView";
+import SearchContent from "@/components/SearchContent";
 
 export const metadata: Metadata = {
   title: "Proprietary Software Products | Presenza & QuanBit",
@@ -29,5 +30,12 @@ export const metadata: Metadata = {
 };
 
 export default function ProductPage() {
-  return <ProductView />;
+  return (
+    <>
+      <ProductView />
+      <div className="container">
+        <SearchContent variant="products" />
+      </div>
+    </>
+  );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ServicesView from "@/components/ServicesView";
+import SearchContent from "@/components/SearchContent";
 
 export const metadata: Metadata = {
   title: "Engineering Services | AI, Web & App Development, Cloud & System Design",
@@ -28,5 +29,12 @@ export const metadata: Metadata = {
 };
 
 export default function ServicesPage() {
-  return <ServicesView />;
+  return (
+    <>
+      <ServicesView />
+      <div className="container">
+        <SearchContent variant="services" />
+      </div>
+    </>
+  );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ClientsView from "@/components/ClientsView";
+import SearchContent from "@/components/SearchContent";
 
 export const metadata: Metadata = {
   title: "Client Partnerships & Case Studies | Reversun",
@@ -25,5 +26,12 @@ export const metadata: Metadata = {
 };
 
 export default function ClientsPage() {
-  return <ClientsView />;
+  return (
+    <>
+      <ClientsView />
+      <div className="container">
+        <SearchContent variant="clients" />
+      </div>
+    </>
+  );
 }

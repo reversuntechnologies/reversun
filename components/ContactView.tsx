@@ -58,45 +58,19 @@ export default function ContactView() {
     setUserQuery("");
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const mailtoHref = `mailto:info@reversun.com?subject=${encodeURIComponent(
+    `Reversun Inquiry [${interestType.toUpperCase()}: ${selectedItem}]`
+  )}&body=${encodeURIComponent(
+    `Name: ${userName || "Not provided"}\nEmail: ${userEmail}\nType: ${interestType}\nInquiry area: ${selectedItem}\nMessage: ${userQuery || "No additional message provided."}`
+  )}`;
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!userEmail) return;
 
-    setStatus("loading");
-    setStatusMsg("Sending your inquiry directly to info@reversun.com...");
-
-    const payload = {
-      name: userName || "Prospective Partner",
-      email: userEmail,
-      type: interestType.toUpperCase(),
-      inquiryArea: selectedItem,
-      message: userQuery || "Inquiry submitted through reversun.com web portal.",
-      _subject: `Reversun Inquiry [${interestType.toUpperCase()}: ${selectedItem}] from ${userName || userEmail}`,
-      _template: "table",
-      _captcha: "false",
-      website: "https://www.reversun.com",
-    };
-
-    try {
-      const res = await fetch("https://formsubmit.co/ajax/info@reversun.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (res.ok) {
-        setStatus("success");
-        setStatusMsg("Inquiry dispatched successfully! Our senior engineers will review and reply within 120 minutes.");
-      } else {
-        throw new Error("Dispatch failed");
-      }
-    } catch {
-      setStatus("error");
-      setStatusMsg("Direct transmission was interrupted. You can still email us directly at info@reversun.com.");
-    }
+    setStatus("success");
+    setStatusMsg("Your email draft is ready. Complete the send from your email client.");
+    window.location.href = mailtoHref;
   };
 
   return (
@@ -183,11 +157,11 @@ export default function ContactView() {
                   <div className={styles.sentIconWrap}>
                     <CheckCircle2 size={42} className={styles.sentSuccessIcon} />
                   </div>
-                  <h3 className={styles.sentTitle}>Inquiry Sent Successfully!</h3>
+                  <h3 className={styles.sentTitle}>Inquiry Ready to Send</h3>
                   <p className={styles.sentDesc}>
                     Thank you, <strong>{userName || "Partner"}</strong>. Your inquiry for{" "}
-                    <strong>{selectedItem}</strong> has been transmitted directly to{" "}
-                    <strong>info@reversun.com</strong>.
+                    <strong>{selectedItem}</strong> has been prepared as an email to{" "}
+                    <strong>info@reversun.com</strong>. {statusMsg}
                   </p>
                   <div className={styles.sentSummaryBox}>
                     <div className={styles.sentSummaryRow}>
@@ -207,6 +181,10 @@ export default function ContactView() {
                   </div>
 
                   <div className={styles.sentActionRow}>
+                    <a href={mailtoHref} className={styles.submitAgainBtn}>
+                      <Send size={16} />
+                      <span>Open Email Draft</span>
+                    </a>
                     <button
                       type="button"
                       onClick={handleResetForm}

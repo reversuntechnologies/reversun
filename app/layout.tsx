@@ -120,6 +120,20 @@ export default function RootLayout({
         "url": "https://www.reversun.com",
         "logo": "https://www.reversun.com/REVERSUN%20LOGO.png",
         "email": "info@reversun.com",
+        "areaServed": "IN",
+        "knowsAbout": [
+          "Web and mobile application development",
+          "AI and workflow automation",
+          "Cloud infrastructure",
+          "Distributed systems design",
+          "Quantum computing education",
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "technical inquiries",
+          "email": "info@reversun.com",
+          "url": "https://www.reversun.com/contact",
+        },
         "foundingLocation": {
           "@type": "Country",
           "name": "India",
@@ -211,7 +225,9 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
         />
       </head>
       <body className={spaceGrotesk.className}>

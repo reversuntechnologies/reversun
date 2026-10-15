@@ -9,10 +9,10 @@ Reversun has a strong technical search foundation: the App Router emits route me
 
 | Dimension | Score | Status | Takeaway |
 |---|---:|---|---|
-| SEO | 8/10 | Strong | Good crawl and metadata foundation; expand page depth and proof. |
-| GEO | 7/10 | On Track | Entity and product facts are clearly represented; add authorship, evidence and references. |
-| AEO | 4/10 | Needs Work | No visible FAQ/HowTo answer blocks or matching structured data were observed. |
-| Combined | 19/30 | On Track | Technical basics are in place, but content authority is still developing. |
+| SEO | 9/10 | Strong | Crawlability, metadata, route depth and page-level structured data are now strong; live performance remains unassessed. |
+| GEO | 8/10 | On Track | Entity context, public product evidence and AI-readable facts are now stronger; named authors and third-party proof remain unavailable. |
+| AEO | 9/10 | Strong | Services, products and public evidence now include answer-first sections, visible FAQs and matching FAQPage schema. |
+| Combined | 26/30 | Strong | The source is substantially more search-ready; external authority and real client evidence cannot be created in code. |
 
 ## Pages Audited
 
@@ -39,7 +39,7 @@ Reversun has a strong technical search foundation: the App Router emits route me
 | Sitemap freshness | `app/sitemap.ts` used `new Date()` for every URL on every request, creating synthetic freshness signals. The audit removes those timestamps. | Fixed |
 | Headings and content | The homepage and service/product views expose meaningful H1/H2/H3 content, but the client route is explicitly upcoming and several pages are summary-level. | Needs Attention |
 | Social metadata | Root and inner routes define Open Graph metadata; root defines a large Twitter card image. | Good |
-| Structured data | Root layout includes Organization, WebSite and two SoftwareApplication entities. No BreadcrumbList or page-specific Service/Product graph was observed. | Needs Attention |
+| Structured data | Root layout includes Organization, WebSite and two SoftwareApplication entities. Services, products and public evidence now add BreadcrumbList, FAQPage and page-specific item graph data. | Good |
 | Image accessibility | Source review did not establish complete alt-text coverage for every rendered image. Verify rendered HTML with a crawler. | Needs tool |
 | Performance | No deployed URL was supplied, so real LCP, INP, CLS and mobile rendering were not assessed. | Needs tool |
 
@@ -50,7 +50,7 @@ Reversun has a strong technical search foundation: the App Router emits route me
 | Entity consistency | Reversun, Presenza and QuanBit are named consistently in metadata, visible copy, JSON-LD and `public/llms.txt`. | Good |
 | Company facts | Organization JSON-LD includes India, email, product/service descriptions and `sameAs` links to GitHub and QuanBit. | Good |
 | AI crawl access | GPTBot, ChatGPT-User, ClaudeBot and PerplexityBot are explicitly allowed. | Good |
-| Citation-ready facts | Product capabilities and service categories are concrete, but the site offers little independently verifiable evidence, author background or referenced research. | Needs Attention |
+| Citation-ready facts | Product capabilities, service categories and public evidence are now stated in dedicated answer-first sections, but the site still lacks independent third-party proof and author background. | Needs Attention |
 | E-E-A-T | No named authors, team credentials, testimonials, awards or press evidence were observed in the audited source. | Needs Attention |
 | `llms.txt` | `public/llms.txt` gives a concise company overview, offerings and primary endpoints. | Good |
 
@@ -58,20 +58,19 @@ Reversun has a strong technical search foundation: the App Router emits route me
 
 | Signal | Finding | Status |
 |---|---|---|
-| Direct answers | Service and product descriptions answer basic what-is questions, but no question-style sections with concise answer blocks were observed. | Needs Attention |
-| FAQ schema | No visible FAQ content or FAQPage JSON-LD was observed. | Missing |
+| Direct answers | Services, products and public evidence now have concise definition, process and decision-answer sections. | Good |
+| FAQ schema | Visible FAQ accordions and matching FAQPage JSON-LD are now present on `/services`, `/product` and `/clients`. | Good |
 | How-to content | No how-to page or HowTo structured data was observed. | Missing |
-| Featured-snippet structure | Service cards use short descriptions and tags, but there are no comparison tables, numbered processes or explicit definition blocks. | Needs Attention |
-| Voice/conversational coverage | The current copy targets broad service terms and product names; long-tail buyer questions are not covered. | Needs Attention |
+| Featured-snippet structure | Answer-first headings, concise paragraphs and question-style FAQ entries now cover service, product and confidentiality intent. | Good |
+| Voice/conversational coverage | Long-tail questions now cover AI automation, web/mobile development, system design, product definitions, access and NDA-limited evidence. | Good |
 
 ## Priority Recommendations
 
 | Priority | Issue | Dimension | Effort | Impact |
 |---|---|---|---|---|
-| High | Publish one real case study or deployment story with permission, problem, approach and measured outcome. | SEO/GEO | Medium | High |
-| High | Expand `/services` into answer-first sections for each service, including audience, process, deliverables and legitimate proof. | SEO/AEO | Medium | High |
-| High | Add a visible FAQ section to `/services`, `/product` or a dedicated FAQ route, then add FAQPage JSON-LD only for the same visible questions. | AEO | Low-Medium | High |
-| Medium | Add page-specific `Service`, `SoftwareApplication` and `BreadcrumbList` JSON-LD where the visible page supports it. | SEO/GEO | Low-Medium | Medium |
+| High | Publish one real client case study or deployment story with written permission, problem, approach and measured outcome. | SEO/GEO | Medium | High |
+| High | Add named authors, team credentials or an approved company About page. | GEO | Medium | High |
+| Medium | Validate the new JSON-LD in Rich Results Test and Schema Markup Validator after deployment. | SEO/AEO | Low | Medium |
 | Medium | Add an About/team surface with named contributors, relevant credentials and company history. | GEO | Medium | High |
 | Quick Win | Replace remaining unsupported superlatives or guarantees with verifiable wording and link to evidence where available. | SEO/GEO | Low | Medium |
 | Quick Win | Run a deployed crawl and Lighthouse/PageSpeed check for image alt text, mobile rendering and Core Web Vitals. | SEO | Low | Medium |
@@ -79,6 +78,7 @@ Reversun has a strong technical search foundation: the App Router emits route me
 ## What's Working Well
 
 - Metadata is unusually complete for a small App Router site: title templates, descriptions, canonicals, Open Graph, Twitter, robots and viewport are present.
+- Services, products and public evidence now have answer-first content with visible FAQs and matching structured data.
 - `app/layout.tsx` provides a coherent organization graph for Reversun, Presenza and QuanBit.
 - `public/llms.txt` is already present and maps the public endpoints for AI discovery.
 - Internal paths connect the homepage to services, products, clients and contact, and inquiry links carry product/service context.
@@ -95,7 +95,7 @@ Reversun has a strong technical search foundation: the App Router emits route me
 ### Days 31-60
 
 - Expand service and product pages around buyer questions and decision criteria.
-- Add visible FAQs and matching structured data.
+- Validate the visible FAQs and matching structured data in Google's Rich Results Test.
 - Add BreadcrumbList and page-specific schema after validating it against visible content.
 - Build a small, relevant outreach list for engineering, education technology and quantum computing publications.
 
